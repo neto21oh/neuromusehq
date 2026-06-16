@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroMuse | ELARA Intelligence Platform</title>
+
+<style>
+:root {
+  --bg:#020b12;
+  --panel:#061923;
+  --line:#00ffee;
+  --text:#eafcff;
+  --muted:#8aa4ad;
+  --accent:#00ffee;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  background:radial-gradient(circle at top,#082833,#020b12 55%);
+  color:var(--text);
+  font-family:Arial, sans-serif;
+}
+
+header {
+  padding:28px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(0,255,238,.25);
+  background:rgba(2,11,18,.85);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo {
+  color:var(--accent);
+  font-weight:bold;
+  letter-spacing:8px;
+  font-size:20px;
+}
+
+nav a {
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:24px;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+section {
+  padding:90px 7%;
+}
+
+.hero {
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+}
+
+.hero h1 {
+  font-size:64px;
+  line-height:1.05;
+  max-width:900px;
+  margin:0 0 24px;
+}
+
+.hero p {
+  font-size:22px;
+  color:var(--muted);
+  max-width:780px;
+  line-height:1.6;
+}
+
+.buttons {
+  margin-top:34px;
+}
+
+.btn {
+  display:inline-block;
+  padding:15px 24px;
+  border:1px solid var(--line);
+  color:var(--accent);
+  text-decoration:none;
+  letter-spacing:2px;
+  font-size:12px;
+  margin-right:14px;
+  margin-top:12px;
+}
+
+.btn.primary {
+  background:linear-gradient(90deg,#00ffee,#38bdf8);
+  color:#001316;
+  font-weight:bold;
+}
+
+.eyebrow {
+  color:var(--accent);
+  letter-spacing:4px;
+  font-size:12px;
+  margin-bottom:14px;
+}
+
+h2 {
+  font-size:40px;
+  margin:0 0 22px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:22px;
+}
+
+.card {
+  background:rgba(6,25,35,.8);
+  border:1px solid rgba(0,255,238,.28);
+  padding:28px;
+  min-height:220px;
+}
+
+.card h3 {
+  color:var(--accent);
+  margin-top:0;
+}
+
+.card p, .card li {
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.platform {
+  border:1px solid rgba(0,255,238,.3);
+  padding:34px;
+  background:rgba(0,255,238,.04);
+  max-width:900px;
+}
+
+.flow {
+  font-family:monospace;
+  color:var(--accent);
+  line-height:2;
+  font-size:16px;
+}
+
+input, textarea {
+  width:100%;
+  padding:14px;
+  margin-bottom:12px;
+  background:#04131b;
+  border:1px solid rgba(0,255,238,.35);
+  color:white;
+}
+
+textarea {
+  min-height:120px;
+}
+
+footer {
+  padding:35px 7%;
+  border-top:1px solid rgba(0,255,238,.25);
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+@media(max-width:700px) {
+  .hero h1 {
+    font-size:42px;
+  }
+
+  nav {
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">NEUROMUSE</div>
+  <nav>
+    <a href="#platform">PLATFORM</a>
+    <a href="#applications">APPLICATIONS</a>
+    <a href="#business">BUSINESS AI</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">ELARA INTELLIGENCE PLATFORM</div>
+    <h1>AI that understands the world around you.</h1>
+    <p>
+      NeuroMuse builds ELARA, a human-centered intelligence platform that connects
+      vision, memory, knowledge, and decision support for people, environments,
+      and organizations.
+    </p>
+
+    <div class="buttons">
+      <a class="btn primary" href="#contact">REQUEST DEMO</a>
+      <a class="btn" href="#business">START BUSINESS ASSESSMENT</a>
+      <a class="btn" href="#platform">EXPLORE PLATFORM</a>
+    </div>
+  </div>
+</section>
+
+<section id="platform">
+  <div class="eyebrow">THE PLATFORM</div>
+  <h2>One intelligence core. Multiple missions.</h2>
+
+  <div class="platform">
+    <div class="flow">
+      Camera / Data / Documents<br>
+      ↓<br>
+      ELARA Core Intelligence<br>
+      ↓<br>
+      MuseOS Decision Layer<br>
+      ↓<br>
+      Specialized Agents and Modules<br>
+      ↓<br>
+      HUD · Mobile · Desktop · Reports
+    </div>
+  </div>
+</section>
+
+<section id="applications">
+  <div class="eyebrow">APPLICATIONS</div>
+  <h2>Built for real-world assistance.</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Assist People</h3>
+      <p>
+        NeuroNest supports memory assistance, object recognition, routine guidance,
+        caregiver support, and daily living awareness.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Understand Environments</h3>
+      <p>
+        NeuroDive, NeuroSurvivor, and field intelligence tools help identify risks,
+        environmental patterns, safety needs, and mission context.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Grow Organizations</h3>
+      <p>
+        CustomerScout and GrantScout help businesses and institutions understand
+        opportunities, generate reports, plan growth, and prepare next steps.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="business">
+  <div class="eyebrow">ELARA BUSINESS AI</div>
+  <h2>AI business assistance for growth, grants, and operations.</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>CustomerScout</h3>
+      <p>
+        Creates AI business assessments, recommends agent modules, and produces
+        growth roadmaps for small businesses and organizations.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>GrantScout</h3>
+      <p>
+        Helps identify funding paths, grant opportunities, contracts, and proposal
+        directions based on the organization’s mission and readiness.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Business Agent Support</h3>
+      <p>
+        Supports reports, outreach, automation planning, customer follow-up,
+        document preparation, and long-term business development.
+      </p>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="card">
+    <h3>Start an ELARA Business Assessment</h3>
+    <input id="bizName" placeholder="Business name">
+    <input id="bizIndustry" placeholder="Industry / business type">
+    <textarea id="bizGoal" placeholder="Main goal or challenge"></textarea>
+    <input id="bizContact" placeholder="Email or phone">
+
+    <a class="btn primary" href="javascript:void(0)" onclick="sendAssessment()">REQUEST ASSESSMENT</a>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">BUILT IN HAWAIʻI</div>
+  <h2>From prototype to platform.</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Live Prototypes</h3>
+      <p>ELARA has evolved from HUD demonstrations into a modular AI operating environment.</p>
+    </div>
+
+    <div class="card">
+      <h3>Education and Workforce</h3>
+      <p>Designed with student involvement, learning pathways, and workforce innovation in mind.</p>
+    </div>
+
+    <div class="card">
+      <h3>Partner Ready</h3>
+      <p>Built for pilots, grants, institutions, small businesses, and real-world deployment.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="eyebrow">CONTACT</div>
+  <h2>Partner with NeuroMuse.</h2>
+
+  <p style="color:var(--muted);max-width:720px;line-height:1.7;">
+    NeuroMuse is seeking pilot partners, institutional collaborators, business clients,
+    and strategic supporters for ELARA-powered AI systems.
+  </p>
+
+  <div class="buttons">
+    <a class="btn primary" href="mailto:neuromuse1977@gmail.com?subject=NeuroMuse Demo Request">REQUEST MORE INFORMATION</a>
+    <a class="btn" href="mailto:neuromuse1977@gmail.com?subject=ELARA Business Assessment Request">EMAIL BUSINESS ASSESSMENT</a>
+  </div>
+</section>
+
+<footer>
+  NEUROMUSE LLC · ELARA INTELLIGENCE PLATFORM · BUILT IN HAWAIʻI
+</footer>
+
+<script>
+function sendAssessment() {
+  const business = document.getElementById("bizName").value.trim();
+  const industry = document.getElementById("bizIndustry").value.trim();
+  const goal = document.getElementById("bizGoal").value.trim();
+  const contact = document.getElementById("bizContact").value.trim();
+
+  if (!business || !industry || !contact) {
+    alert("Please enter business name, industry, and contact.");
+    return;
+  }
+
+  const subject = "ELARA Business Assessment Request";
+  const body =
+    "Business: " + business + "%0D%0A" +
+    "Industry: " + industry + "%0D%0A" +
+    "Goal: " + goal + "%0D%0A" +
+    "Contact: " + contact;
+
+  window.location.href =
+    "mailto:neuromuse1977@gmail.com?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" + body;
+}
+</script>
+
+</body>
+</html>
