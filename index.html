@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELARA™ · NeuroMuse™ — Built in Hawaiʻi</title>
+
+.live-demo-box{
+    padding:40px;
+}
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap');
+
+/* ═══════ TOKENS ═══════ */
+:root {
+  --teal:    #0af0c8;
+  --sky:     #38bdf8;
+  --amber:   #f59e0b;
+  --coral:   #ff6b6b;
+  --violet:  #a78bfa;
+  --ink:     #02070f;
+  --deep:    #040d1a;
+  --card:    rgba(4,14,28,0.82);
+  --glass:   rgba(10,240,200,0.06);
+  --border:  rgba(10,240,200,0.14);
+  --border2: rgba(10,240,200,0.32);
+  --text:    rgba(220,240,255,0.92);
+  --muted:   rgba(148,190,220,0.48);
+  --serif:   'Cormorant', serif;
+  --display: 'Syne', sans-serif;
+  --mono:    'DM Mono', monospace;
+  --glow:    0 0 30px rgba(10,240,200,0.25);
+  --glowb:   0 0 20px rgba(56,189,248,0.2);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+body {
+  background:var(--ink);
+  color:var(--text);
+  font-family:var(--display);
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* ── Global grid bg ── */
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    linear-gradient(rgba(10,240,200,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,240,200,0.025) 1px, transparent 1px);
+  background-size:52px 52px;
+}
+
+/* ── Grain ── */
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.22;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  background-size:180px; mix-blend-mode:overlay;
+}
+
+/* ── Section base ── */
+section { position:relative; z-index:1; }
+
+/* ── Container ── */
+.container { max-width:1160px; margin:0 auto; padding:0 40px; }
+
+/* ═══════════════════════════
+   NAV
+═══════════════════════════ */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:16px 40px;
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(2,7,15,0.85);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(14px);
+}
+.nav-logo {
+  display:flex; flex-direction:column; gap:1px;
+}
+.nav-brand {
+  font-family:var(--mono); font-size:13px; font-weight:500;
+  letter-spacing:.32em; color:var(--teal);
+  text-shadow:0 0 16px rgba(10,240,200,0.5);
+}
+.nav-sub { font-family:var(--mono); font-size:8px; letter-spacing:.25em; color:rgba(10,240,200,0.35); }
+.nav-links {
+  display:flex; align-items:center; gap:32px;
+  list-style:none;
+}
+.nav-links a {
+  font-family:var(--mono); font-size:9px; letter-spacing:.2em;
+  color:rgba(255,255,255,0.45); text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover { color:var(--teal); }
+.nav-cta {
+  padding:8px 20px;
+  border:1px solid rgba(10,240,200,0.35);
+  border-radius:2px;
+  font-family:var(--mono); font-size:9px; letter-spacing:.2em;
+  color:var(--teal); background:rgba(10,240,200,0.06);
+  text-decoration:none; transition:all .2s;
+}
+.nav-cta:hover { background:rgba(10,240,200,0.16); border-color:rgba(10,240,200,0.6); }
+
+/* ═══════════════════════════
+   HERO
+═══════════════════════════ */
+#hero {
+  min-height:100vh;
+  display:flex; align-items:center;
+  padding-top:80px;
+  position:relative; overflow:hidden;
+}
+
+/* Animated orb background */
+.hero-orb {
+  position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none;
+  animation:orb-drift 12s ease-in-out infinite alternate;
+}
+.orb-teal { width:600px; height:600px; background:radial-gradient(circle,rgba(10,240,200,0.08) 0%,transparent 70%); top:-10%; left:-5%; animation-delay:0s; }
+.orb-blue { width:500px; height:500px; background:radial-gradient(circle,rgba(56,189,248,0.07) 0%,transparent 70%); top:20%; right:-5%; animation-delay:-4s; }
+.orb-amber{ width:300px; height:300px; background:radial-gradient(circle,rgba(245,158,11,0.05) 0%,transparent 70%); bottom:10%; left:40%; animation-delay:-8s; }
+@keyframes orb-drift { from{transform:translate(0,0) scale(1)} to{transform:translate(30px,20px) scale(1.08)} }
+
+/* Diamond Head SVG silhouette */
+.dh-silhouette {
+  position:absolute; bottom:0; right:0;
+  width:55%; height:65%;
+  pointer-events:none; opacity:.08;
+}
+
+.hero-inner {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:64px; align-items:center;
+  width:100%; padding:0 40px;
+  max-width:1200px; margin:0 auto;
+}
+
+.hero-left {}
+
+.hero-eyebrow {
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--mono); font-size:9px; letter-spacing:.28em;
+  color:rgba(10,240,200,0.55); margin-bottom:20px;
+}
+.eyebrow-line { width:32px; height:1px; background:var(--teal); }
+
+.hero-title {
+  font-family:var(--serif); font-size:clamp(42px,5.5vw,78px);
+  font-weight:300; line-height:1.06; letter-spacing:-.01em;
+  margin-bottom:12px;
+}
+.hero-title em { font-style:italic; color:var(--teal); }
+.hero-title strong { font-weight:600; display:block; }
+
+.hero-sub {
+  font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+  color:var(--teal); margin-bottom:20px; opacity:.6;
+}
+
+.hero-desc {
+  font-size:15px; font-weight:300; line-height:1.75;
+  color:rgba(220,240,255,0.65); max-width:480px; margin-bottom:36px;
+}
+
+.hero-proof{
+  margin-top:28px;
+  max-width:720px;
+  font-size:13px;
+  line-height:1.8;
+  color:rgba(220,240,255,0.82);
+  font-family:var(--mono);
+  letter-spacing:.04em;
+}
+
+.hero-status{
+  margin-top:18px;
+  display:inline-flex;
+  align-items:center;
+  max-width:620px;
+  padding:12px 18px;
+  border:1px solid rgba(10,240,200,0.18);
+  background:rgba(10,240,200,0.05);
+  color:var(--teal);
+  font-size:10px;
+  line-height:1.7;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-family:var(--mono);
+  border-radius:4px;
+}
+
+.hero-pills {
+  display:flex; flex-wrap:wrap; gap:8px; margin-bottom:36px;
+}
+.pill {
+  padding:5px 14px; border-radius:20px; border:1px solid;
+  font-family:var(--mono); font-size:8px; letter-spacing:.14em;
+}
+.pill.teal   { border-color:rgba(10,240,200,0.3); color:var(--teal); background:rgba(10,240,200,0.06); }
+.pill.sky    { border-color:rgba(56,189,248,0.3); color:var(--sky); background:rgba(56,189,248,0.06); }
+.pill.amber  { border-color:rgba(245,158,11,0.3); color:var(--amber); background:rgba(245,158,11,0.06); }
+.pill.violet { border-color:rgba(167,139,250,0.3); color:var(--violet); background:rgba(167,139,250,0.06); }
+
+.hero-actions { display:flex; align-items:center; gap:16px; }
+.btn-primary {
+  padding:14px 32px;
+  background:linear-gradient(135deg,var(--teal),var(--sky));
+  border:none; border-radius:2px;
+  font-family:var(--mono); font-size:9px; letter-spacing:.22em; color:#000;
+  font-weight:500; cursor:pointer; transition:all .25s;
+  text-decoration:none; display:inline-block;
+  box-shadow:0 4px 24px rgba(10,240,200,0.3);
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(10,240,200,0.45); }
+.btn-outline {
+  padding:13px 28px;
+  border:1px solid rgba(10,240,200,0.35); border-radius:2px;
+  font-family:var(--mono); font-size:9px; letter-spacing:.22em; color:var(--teal);
+  background:transparent; cursor:pointer; transition:all .2s;
+  text-decoration:none; display:inline-block;
+}
+.btn-outline:hover { background:rgba(10,240,200,0.08); }
+
+/* Hero HUD preview */
+.hero-right { position:relative; }
+.hud-preview {
+  position:relative;
+  width:100%; aspect-ratio:4/3;
+  background:rgba(4,14,28,0.9);
+  border:1px solid var(--border);
+  border-radius:4px;
+  overflow:hidden;
+  box-shadow:var(--glow), 0 40px 80px rgba(0,0,0,0.5);
+}
+.hud-preview canvas { position:absolute; inset:0; width:100% !important; height:100% !important; }
+.hud-corner { position:absolute; width:20px; height:20px; border-color:var(--teal); border-style:solid; opacity:.6; }
+.hud-corner.tl{top:10px;left:10px;border-width:1.5px 0 0 1.5px;}
+.hud-corner.tr{top:10px;right:10px;border-width:1.5px 1.5px 0 0;}
+.hud-corner.bl{bottom:10px;left:10px;border-width:0 0 1.5px 1.5px;}
+.hud-corner.br{bottom:10px;right:10px;border-width:0 1.5px 1.5px 0;}
+.hud-brand-overlay {
+  position:absolute; bottom:12px; right:14px;
+  font-family:var(--mono); font-size:9px; letter-spacing:.25em;
+  color:rgba(10,240,200,0.45);
+}
+.hud-scan-line {
+  position:absolute; left:0; right:0; height:1px; top:0;
+  background:linear-gradient(90deg,transparent,rgba(10,240,200,0.2),transparent);
+  animation:scan-down 5s linear infinite;
+}
+@keyframes scan-down { from{top:-1px} to{top:100%} }
+
+/* Hero stats */
+.hero-stats {
+  display:flex; gap:32px; margin-top:24px; padding-top:24px;
+  border-top:1px solid var(--border);
+}
+.stat-item {}
+.stat-num {
+  font-family:var(--serif); font-size:28px; font-weight:600;
+  color:var(--teal); line-height:1; display:block;
+}
+.stat-label { font-family:var(--mono); font-size:8px; letter-spacing:.18em; color:var(--muted); }
+
+/* ═══════════════════════════
+   LIVE DEMOS
+═══════════════════════════ */
+
+#live-demos {
+  padding:120px 0;
+}
+
+.demo-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-top:60px;
+}
+
+.demo-card {
+  background:rgba(4,14,28,0.9);
+  border:1px solid var(--border);
+  border-radius:4px;
+  overflow:hidden;
+  transition:transform .3s, box-shadow .3s;
+}
+
+.demo-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.45), var(--glow);
+}
+
+.demo-card img {
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+}
+
+.demo-info {
+  padding:18px;
+}
+
+.demo-tag {
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:.18em;
+  color:var(--teal);
+  margin-bottom:8px;
+}
+
+.demo-title {
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+}
+
+@media(max-width:900px){
+  .demo-grid {
+    grid-template-columns:1fr;
+  }
+}
+
+/* ═══════════════════════════
+   MODULES SECTION
+═══════════════════════════ */
+#modules {
+  padding:120px 0;
+  background:linear-gradient(180deg,transparent,rgba(4,14,28,0.6),transparent);
+}
+
+.section-eyebrow {
+  font-family:var(--mono); font-size:9px; letter-spacing:.28em;
+  color:rgba(10,240,200,0.5); margin-bottom:12px; text-align:center;
+}
+.section-title {
+  font-family:var(--serif); font-size:clamp(32px,4vw,54px);
+  font-weight:300; line-height:1.1; text-align:center;
+  margin-bottom:16px;
+}
+.section-title em { font-style:italic; color:var(--teal); }
+.section-desc {
+  font-size:15px; font-weight:300; color:rgba(220,240,255,0.55);
+  text-align:center; max-width:580px; margin:0 auto 60px;
+  line-height:1.75;
+}
+
+.modules-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--border);
+  border:1px solid var(--border);
+}
+.module-card {
+  background:var(--deep);
+  padding:36px 28px;
+  position:relative; overflow:hidden;
+  transition:background .3s;
+}
+.module-card:hover { background:rgba(4,14,28,0.95); }
+.module-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  opacity:0; transition:opacity .3s;
+}
+.module-card:hover::before { opacity:1; }
+.mc-teal::before  { background:linear-gradient(90deg,var(--teal),var(--sky)); }
+.mc-sky::before   { background:linear-gradient(90deg,var(--sky),var(--violet)); }
+.mc-amber::before { background:linear-gradient(90deg,var(--amber),var(--coral)); }
+.mc-violet::before{ background:linear-gradient(90deg,var(--violet),var(--teal)); }
+.mc-coral::before { background:linear-gradient(90deg,var(--coral),var(--amber)); }
+.mc-green::before { background:linear-gradient(90deg,#22c55e,var(--teal)); }
+
+.mod-icon { font-size:28px; margin-bottom:16px; line-height:1; }
+.mod-tag  {
+  font-family:var(--mono); font-size:7.5px; letter-spacing:.18em;
+  padding:2px 7px; border-radius:2px; margin-bottom:10px; display:inline-block;
+}
+.mod-tag.teal   { background:rgba(10,240,200,0.1); color:var(--teal); border:1px solid rgba(10,240,200,0.2); }
+.mod-tag.sky    { background:rgba(56,189,248,0.1); color:var(--sky); border:1px solid rgba(56,189,248,0.2); }
+.mod-tag.amber  { background:rgba(245,158,11,0.1); color:var(--amber); border:1px solid rgba(245,158,11,0.2); }
+.mod-tag.violet { background:rgba(167,139,250,0.1); color:var(--violet); border:1px solid rgba(167,139,250,0.2); }
+.mod-tag.coral  { background:rgba(255,107,107,0.1); color:var(--coral); border:1px solid rgba(255,107,107,0.2); }
+.mod-tag.green  { background:rgba(34,197,94,0.1); color:#4ade80; border:1px solid rgba(34,197,94,0.2); }
+
+.mod-name { font-family:var(--display); font-size:16px; font-weight:700; letter-spacing:.04em; margin-bottom:8px; }
+.mod-desc { font-size:13px; font-weight:300; line-height:1.65; color:rgba(220,240,255,0.55); margin-bottom:16px; }
+.mod-features { list-style:none; display:flex; flex-direction:column; gap:4px; }
+.mod-features li {
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.08em;
+  color:rgba(10,240,200,0.5); padding-left:12px; position:relative;
+}
+.mod-features li::before { content:'·'; position:absolute; left:0; color:var(--teal); }
+
+/* ═══════════════════════════
+   HUD LIVE DEMO
+═══════════════════════════ */
+#hud-demo {
+  padding:120px 0;
+}
+
+.hud-demo-inner {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:64px; align-items:center;
+}
+.hud-demo-canvas-wrap {
+  position:relative;
+  aspect-ratio:16/10;
+  border:1px solid var(--border);
+  border-radius:4px; overflow:hidden;
+  background:#000;
+  box-shadow:var(--glow), 0 40px 80px rgba(0,0,0,0.5);
+}
+.hud-demo-canvas-wrap canvas { position:absolute; inset:0; width:100%!important; height:100%!important; }
+#hud-corner-tl{position:absolute;top:8px;left:8px;width:16px;height:16px;border-top:1.5px solid var(--teal);border-left:1.5px solid var(--teal);opacity:.7;}
+#hud-corner-br{position:absolute;bottom:8px;right:8px;width:16px;height:16px;border-bottom:1.5px solid var(--teal);border-right:1.5px solid var(--teal);opacity:.7;}
+
+.hud-demo-text {}
+.hud-mode-pills {
+  display:flex; gap:8px; margin-top:24px; flex-wrap:wrap;
+}
+.hud-mode-pill {
+  padding:7px 16px;
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.14em;
+  border:1px solid var(--border); border-radius:2px;
+  cursor:pointer; transition:all .2s; color:var(--muted);
+  background:transparent;
+}
+.hud-mode-pill.active, .hud-mode-pill:hover {
+  border-color:var(--teal); color:var(--teal); background:rgba(10,240,200,0.08);
+}
+
+/* ═══════════════════════════
+   WINGS / HEALTHCARE
+═══════════════════════════ */
+#wings {
+  padding:120px 0;
+  background:linear-gradient(180deg,transparent,rgba(56,189,248,0.03),transparent);
+}
+
+.wings-inner {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:80px; align-items:center;
+}
+.wings-visual {
+  position:relative;
+  aspect-ratio:4/3;
+  background:rgba(4,14,28,0.9);
+  border:1px solid var(--border);
+  border-radius:4px; overflow:hidden;
+  box-shadow:var(--glowb);
+}
+.wings-visual canvas { position:absolute; inset:0; width:100%!important; height:100%!important; }
+
+.wings-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 14px;
+  background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25);
+  border-radius:2px; font-family:var(--mono); font-size:8px; letter-spacing:.18em;
+  color:var(--sky); margin-bottom:20px;
+}
+.wings-badge-dot { width:5px; height:5px; border-radius:50%; background:var(--sky); animation:pip 1.5s ease-in-out infinite; }
+@keyframes pip { 0%,100%{opacity:1}50%{opacity:.2} }
+
+.wings-features { display:flex; flex-direction:column; gap:16px; margin-top:28px; }
+.wf-item {
+  display:flex; gap:14px; align-items:flex-start;
+  padding:14px 16px;
+  background:var(--glass); border:1px solid var(--border); border-radius:3px;
+}
+.wf-icon { font-size:18px; flex-shrink:0; margin-top:2px; }
+.wf-title { font-size:13px; font-weight:600; letter-spacing:.04em; margin-bottom:3px; }
+.wf-desc  { font-size:12px; font-weight:300; color:rgba(220,240,255,0.5); line-height:1.6; }
+
+/* ═══════════════════════════
+   OCEAN & ECO
+═══════════════════════════ */
+#ocean {
+  padding:120px 0;
+}
+
+.ocean-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  margin-top:60px;
+}
+.ocean-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:4px; overflow:hidden;
+  transition:transform .3s, box-shadow .3s;
+}
+.ocean-card:hover { transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,0.4),var(--glow); }
+.ocean-card-visual {
+  position:relative; aspect-ratio:16/9;
+  overflow:hidden;
+}
+.ocean-card-visual canvas { position:absolute; inset:0; width:100%!important; height:100%!important; }
+.ocean-card-body { padding:20px 20px 24px; }
+.ocb-tag { font-family:var(--mono); font-size:7.5px; letter-spacing:.18em; color:var(--teal); margin-bottom:8px; }
+.ocb-title { font-size:15px; font-weight:700; margin-bottom:6px; }
+.ocb-desc  { font-size:12px; font-weight:300; line-height:1.65; color:rgba(220,240,255,0.5); }
+
+/* ═══════════════════════════
+   KCC SECTION
+═══════════════════════════ */
+#kcc {
+  padding:120px 0;
+  background:linear-gradient(180deg,transparent,rgba(10,240,200,0.02),transparent);
+}
+
+.kcc-inner {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:80px; align-items:center;
+}
+.kcc-badge-row {
+  display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px;
+}
+.kcc-badge {
+  padding:6px 14px;
+  font-family:var(--mono); font-size:8px; letter-spacing:.16em;
+  border-radius:2px; border:1px solid;
+}
+.kcc-badge.teal   { border-color:rgba(10,240,200,0.3); color:var(--teal); }
+.kcc-badge.amber  { border-color:rgba(245,158,11,0.3); color:var(--amber); }
+.kcc-badge.violet { border-color:rgba(167,139,250,0.3); color:var(--violet); }
+
+.collab-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+.collab-card {
+  padding:16px 18px;
+  background:var(--glass); border:1px solid var(--border); border-radius:3px;
+}
+.cc-dept { font-family:var(--mono); font-size:7.5px; letter-spacing:.16em; color:var(--teal); margin-bottom:4px; }
+.cc-name { font-size:12px; font-weight:600; margin-bottom:2px; }
+.cc-role { font-size:11px; font-weight:300; color:rgba(220,240,255,0.45); }
+
+.timeline { display:flex; flex-direction:column; gap:0; margin-top:8px; }
+.tl-item {
+  display:flex; gap:16px; align-items:flex-start;
+  padding-bottom:20px; position:relative;
+}
+.tl-item:not(:last-child)::after {
+  content:''; position:absolute; left:8px; top:20px; bottom:0;
+  width:1px; background:var(--border);
+}
+.tl-dot {
+  width:17px; height:17px; border-radius:50%; flex-shrink:0;
+  border:1.5px solid var(--teal);
+  display:flex; align-items:center; justify-content:center;
+  margin-top:2px;
+}
+.tl-dot-inner { width:5px; height:5px; border-radius:50%; background:var(--teal); }
+.tl-date { font-family:var(--mono); font-size:8px; letter-spacing:.12em; color:var(--teal); margin-bottom:2px; }
+.tl-event { font-size:13px; font-weight:500; margin-bottom:2px; }
+.tl-detail { font-size:11px; font-weight:300; color:rgba(220,240,255,0.45); line-height:1.5; }
+
+/* ═══════════════════════════
+   PITCH DECK SLIDE
+═══════════════════════════ */
+#pitch {
+  padding:120px 0;
+}
+
+.pitch-slide {
+  max-width:960px; margin:60px auto 0;
+  background:rgba(4,10,20,0.95);
+  border:1px solid var(--border);
+  border-radius:4px; overflow:hidden;
+  box-shadow:var(--glow), 0 60px 120px rgba(0,0,0,0.6);
+}
+.pitch-slide::before {
+  content:''; display:block; height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--sky),var(--violet),var(--teal));
+}
+
+.pitch-header {
+  padding:36px 48px 28px;
+  border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:flex-end;
+}
+.ph-left {}
+.ph-slide-num { font-family:var(--mono); font-size:8px; letter-spacing:.22em; color:var(--muted); margin-bottom:4px; }
+.ph-title { font-family:var(--serif); font-size:28px; font-weight:300; }
+.ph-title em { font-style:italic; color:var(--teal); }
+.ph-right { font-family:var(--mono); font-size:8px; letter-spacing:.2em; color:var(--muted); text-align:right; }
+
+.pitch-body {
+  padding:36px 48px;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+.pb-col {}
+.pb-section-title {
+  font-family:var(--mono); font-size:8.5px; letter-spacing:.22em;
+  color:rgba(10,240,200,0.5); margin-bottom:14px;
+  padding-bottom:6px; border-bottom:1px solid var(--border);
+}
+.pb-metric-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
+.pb-metric {
+  padding:12px 14px;
+  background:rgba(10,240,200,0.04); border:1px solid var(--border); border-radius:2px;
+}
+.pb-metric-val { font-family:var(--serif); font-size:22px; font-weight:600; color:var(--teal); }
+.pb-metric-label { font-family:var(--mono); font-size:7.5px; letter-spacing:.12em; color:var(--muted); }
+
+.pb-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
+.pb-list li {
+  font-size:12px; font-weight:300; line-height:1.5; color:rgba(220,240,255,0.65);
+  padding-left:14px; position:relative;
+}
+.pb-list li::before { content:'—'; position:absolute; left:0; color:var(--teal); font-size:10px; }
+
+.pitch-footer {
+  padding:18px 48px;
+  border-top:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center;
+  background:rgba(10,240,200,0.02);
+}
+.pf-brand { font-family:var(--mono); font-size:10px; letter-spacing:.3em; color:var(--teal); }
+.pf-tagline { font-family:var(--mono); font-size:8px; letter-spacing:.2em; color:var(--muted); }
+.pf-built { font-family:var(--mono); font-size:8px; letter-spacing:.18em; color:rgba(10,240,200,0.35); }
+
+/* ═══════════════════════════
+   SPEC ONE-PAGER
+═══════════════════════════ */
+#spec {
+  padding:120px 0;
+  background:linear-gradient(180deg,transparent,rgba(56,189,248,0.03),transparent);
+}
+
+.spec-doc {
+  max-width:880px; margin:60px auto 0;
+  background:rgba(4,10,20,0.95);
+  border:1px solid var(--border); border-radius:4px;
+  overflow:hidden;
+}
+.spec-header {
+  padding:32px 40px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px solid var(--border);
+  background:rgba(10,240,200,0.03);
+}
+.sh-title { font-family:var(--serif); font-size:22px; font-weight:600; }
+.sh-meta { text-align:right; }
+.sh-meta div { font-family:var(--mono); font-size:8px; letter-spacing:.14em; color:var(--muted); line-height:2; }
+.sh-meta span { color:var(--teal); }
+
+.spec-body { padding:32px 40px; }
+.spec-section { margin-bottom:32px; }
+.spec-section-title {
+  font-family:var(--mono); font-size:9px; letter-spacing:.22em;
+  color:var(--teal); margin-bottom:14px;
+  padding-bottom:6px; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+}
+.sst-line { flex:1; height:1px; background:var(--border); }
+
+.spec-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:12px; }
+.spec-item {
+  padding:10px 12px;
+  background:rgba(10,240,200,0.03); border:1px solid var(--border); border-radius:2px;
+}
+.si-key   { font-family:var(--mono); font-size:7.5px; letter-spacing:.14em; color:var(--muted); margin-bottom:3px; }
+.si-val   { font-size:12px; font-weight:500; color:var(--text); }
+.si-val.teal { color:var(--teal); }
+
+.spec-table { width:100%; border-collapse:collapse; }
+.spec-table th {
+  font-family:var(--mono); font-size:7.5px; letter-spacing:.16em; color:var(--muted);
+  text-align:left; padding:7px 10px; border-bottom:1px solid var(--border);
+}
+.spec-table td {
+  font-size:12px; font-weight:300; color:rgba(220,240,255,0.7);
+  padding:8px 10px; border-bottom:1px solid rgba(10,240,200,0.05);
+  vertical-align:top; line-height:1.5;
+}
+.spec-table td:first-child { color:var(--teal); font-family:var(--mono); font-size:10px; letter-spacing:.08em; }
+
+.spec-footer {
+  padding:16px 40px;
+  border-top:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--mono); font-size:8px; letter-spacing:.16em; color:var(--muted);
+}
+.sf-brand { color:var(--teal); }
+
+/* ═══════════════════════════
+   SOCIAL CTA
+═══════════════════════════ */
+#cta {
+  padding:120px 0 80px;
+  text-align:center;
+}
+.cta-inner {
+  max-width:700px; margin:0 auto;
+}
+.cta-label {
+  font-family:var(--mono); font-size:9px; letter-spacing:.28em;
+  color:rgba(10,240,200,0.4); margin-bottom:20px;
+}
+.cta-title {
+  font-family:var(--serif); font-size:clamp(36px,5vw,64px);
+  font-weight:300; line-height:1.1; margin-bottom:20px;
+}
+.cta-title em { font-style:italic; color:var(--teal); }
+.cta-desc {
+  font-size:15px; font-weight:300; line-height:1.75;
+  color:rgba(220,240,255,0.55); margin-bottom:40px;
+}
+.cta-actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+/* ═══════════════════════════
+   FOOTER
+═══════════════════════════ */
+footer {
+  border-top:1px solid var(--border);
+  padding:32px 40px;
+  display:flex; justify-content:space-between; align-items:center;
+  position:relative; z-index:1;
+}
+footer::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,var(--teal) 30%,var(--sky) 70%,transparent);
+  opacity:.25;
+}
+.footer-brand { font-family:var(--mono); font-size:11px; letter-spacing:.3em; color:var(--teal); }
+.footer-center { font-family:var(--mono); font-size:8px; letter-spacing:.22em; color:var(--muted); }
+.footer-right { font-family:var(--mono); font-size:8px; letter-spacing:.16em; color:rgba(10,240,200,0.3); }
+
+/* ═══════════════════════════
+   SCROLL REVEAL
+═══════════════════════════ */
+.reveal {
+  opacity:0; transform:translateY(28px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+.reveal.vis { opacity:1; transform:none; }
+
+/* ═══════════════════════════
+   RESPONSIVE
+═══════════════════════════ */
+@media(max-width:900px){
+  .hero-inner,.hud-demo-inner,.wings-inner,.kcc-inner { grid-template-columns:1fr; }
+  .hero-right,.wings-visual { display:none; }
+  .modules-grid { grid-template-columns:1fr 1fr; }
+  .ocean-grid { grid-template-columns:1fr; }
+  nav ul { display:none; }
+  .pitch-body { grid-template-columns:1fr; }
+  .spec-grid  { grid-template-columns:1fr 1fr; }
+  .collab-grid { grid-template-columns:1fr; }
+}
+.assessment-input {
+  width:100%;
+  padding:14px 16px;
+  margin-bottom:12px;
+  background:rgba(10,240,200,0.04);
+  border:1px solid var(--border);
+  color:var(--text);
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+}
+
+.assessment-input::placeholder {
+  color:rgba(220,240,255,0.35);
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-brand">ELARA™ · NEUROMUSE™</div>
+    <div class="nav-sub">BUILT IN HAWAIʻI · AI HUD ECOSYSTEM</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#modules">MODULES</a></li>
+    <li><a href="#wings">HEALTHCARE</a></li>
+    <li><a href="#ocean">ENVIRONMENT</a></li>
+    <li><a href="#kcc">PARTNERS</a></li>
+    <li><a href="#pitch">INVESTORS</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">REQUEST DEMO</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb orb-teal"></div>
+  <div class="hero-orb orb-blue"></div>
+  <div class="hero-orb orb-amber"></div>
+
+  <!-- Diamond Head silhouette -->
+  <svg class="dh-silhouette" viewBox="0 0 600 400" preserveAspectRatio="xMaxYMax meet" fill="currentColor">
+    <path d="M0 400 L0 280 L80 200 L180 170 L260 190 L320 140 L400 180 L480 220 L560 200 L600 210 L600 400 Z" fill="rgba(10,240,200,1)"/>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        PROTOTYPE BUILD 0.7.4 · NEUROMUSE LLC
+      </div>
+
+      <h1 class="hero-title">
+        <em>Augmented</em><br>
+        <strong>Intelligence.</strong><br>
+        Built in Hawaiʻi.
+      </h1>
+
+      <div class="hero-sub">ELARA™ · NEUROMUSE™ · MUSE OS 2.1</div>
+
+      <p class="hero-desc">
+  A modular AR smart HUD ecosystem bridging wearable AI, healthcare accessibility,
+  ocean conservation, and field intelligence — independently developed by NeuroMuse LLC in Hawaiʻi, with educational engagement through local STEM and KCC-related programs.
+</p>
+
+<div class="hero-proof">
+  Founded in Hawaiʻi in 2025 · Offline-first wearable AI
+  for healthcare, environmental intelligence, and STEM education.
+</div>
+
+<div class="hero-status">
+ Working prototypes • Public demonstrations • Hawaiʻi STEM engagement
+</div>
+
+      <div class="hero-pills">
+        <span class="pill teal">AR SMARTGLASSES</span>
+        <span class="pill sky">HEALTHCARE AI</span>
+        <span class="pill amber">OCEAN INTELLIGENCE</span>
+        <span class="pill violet">FIELD OPERATIONS</span>
+        <span class="pill teal">NEURO MODULES</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#hud-demo" class="btn-primary">EXPLORE LIVE HUD</a>
+        <a href="#pitch" class="btn-outline">INVESTOR DECK</a>
+        <a href="#business-assessment" class="btn-outline">
+        START AI ASSESSMENT
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">6</span>
+          <span class="stat-label">ACTIVE MODULES</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3</span>
+          <span class="stat-label">RESEARCH DOMAINS</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">v0.7</span>
+          <span class="stat-label">PROTOTYPE BUILD</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">STEM Demonstration & Engagement</span>
+          <span class="stat-label">COLLABORATION</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hud-preview">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hud-corner tl"></div>
+        <div class="hud-corner tr"></div>
+        <div class="hud-corner bl"></div>
+        <div class="hud-corner br"></div>
+        <div class="hud-scan-line"></div>
+        <div class="hud-brand-overlay">ELARA™ · MUSE OS 2.1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DEMONSTRATIONS -->
+<section id="live-demos">
+
+<div class="container">
+
+  <div class="section-eyebrow">
+    // LIVE FIELD DEMONSTRATIONS
+  </div>
+
+  <h2 class="section-title">
+    <em>Real prototypes.</em> Real demonstrations.
+  </h2>
+
+  <p class="section-desc">
+    ELARA and NeuroMuse prototypes have already been publicly demonstrated
+    during Hawaiʻi innovation showcases, STEM events, and live engineering sessions.
+  </p>
+
+  <div class="demo-grid">
+
+    <div class="demo-card">
+      <img src="images/capitol-demo.jpg" alt="State Capitol Demo">
+      <div class="demo-info">
+        <div class="demo-tag">HAWAIʻI STATE CAPITOL</div>
+        <div class="demo-title">Innovation Showcase Demo</div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <img src="images/kcc-demo.jpg" alt="KCC Demo">
+      <div class="demo-info">
+        <div class="demo-tag">KAPIʻOLANI COMMUNITY COLLEGE</div>
+        <div class="demo-title">Independent Development · STEM Demonstration & Engagement</div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <img src="images/hud-demo.jpg" alt="HUD Demo">
+      <div class="demo-info">
+        <div class="demo-tag">LIVE HUD SYSTEM</div>
+        <div class="demo-title">MuseOS Prototype Build</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- MODULES -->
+<section id="modules">
+  <div class="container">
+    <div class="section-eyebrow">// NEURO MODULE ECOSYSTEM</div>
+    <h2 class="section-title"><em>Six domains.</em> One platform.</h2>
+    <p class="section-desc">
+      ELARA's modular architecture allows domain-specific AI intelligence to load on demand —
+      each module purpose-built for its environment.
+    </p>
+    <div class="modules-grid reveal">
+      <div class="module-card mc-teal">
+        <div class="mod-icon">🏠</div>
+        <span class="mod-tag teal">NEURONEST</span>
+        <div class="mod-name">Home & Memory Assist</div>
+        <div class="mod-desc">AI-powered home environment awareness with memory and daily living support for elderly and accessibility users.</div>
+        <ul class="mod-features">
+          <li>Memory context overlay</li>
+          <li>Medication & schedule alerts</li>
+          <li>Face and object recognition</li>
+          <li>Caregiver remote monitoring</li>
+        </ul>
+      </div>
+      <div class="module-card mc-amber">
+        <div class="mod-icon">🌿</div>
+        <span class="mod-tag amber">NEUROSURVIVOR</span>
+        <div class="mod-name">Field Survival AI</div>
+        <div class="mod-desc">Real-time terrain analysis, weather alerts, navigation overlays, and survival protocol guidance for remote operations.</div>
+        <ul class="mod-features">
+          <li>Topographic HUD mapping</li>
+          <li>Species identification</li>
+          <li>Weather + hazard alerts</li>
+          <li>Offline SSD knowledge base</li>
+        </ul>
+      </div>
+      <div class="module-card mc-coral">
+        <div class="mod-icon">🛡</div>
+        <span class="mod-tag coral">NEUROGUARDIAN</span>
+        <div class="mod-name">Threat Detection</div>
+        <div class="mod-desc">Environmental threat recognition, safety monitoring, and protective alert systems for field operators and first responders.</div>
+        <ul class="mod-features">
+          <li>Hazard zone overlay</li>
+          <li>Motion detection AI</li>
+          <li>Emergency protocol HUD</li>
+          <li>Team position tracking</li>
+        </ul>
+      </div>
+      <div class="module-card mc-sky">
+        <div class="mod-icon">🧭</div>
+        <span class="mod-tag sky">NEUROFLOW</span>
+        <div class="mod-name">Navigation & AR Paths</div>
+        <div class="mod-desc">Real-time navigation overlays, route optimization, and AR path guidance for urban, marine, and wilderness environments.</div>
+        <ul class="mod-features">
+          <li>Perspective path arrows</li>
+          <li>Waypoint + distance HUD</li>
+          <li>Pedestrian mode / drone mode</li>
+          <li>GPS + compass integration</li>
+        </ul>
+      </div>
+      <div class="module-card mc-green">
+        <div class="mod-icon">🌊</div>
+        <span class="mod-tag green">NEUROECO</span>
+        <div class="mod-name">Environmental Intelligence</div>
+        <div class="mod-desc">Ocean health monitoring, reef assessment, species tracking, and environmental data overlays for conservation research.</div>
+        <ul class="mod-features">
+          <li>Reef health indicator HUD</li>
+          <li>Marine species ID</li>
+          <li>Water quality overlays</li>
+          <li>Drone mapping integration</li>
+        </ul>
+      </div>
+      <div class="module-card mc-violet">
+        <div class="mod-icon">🏥</div>
+        <span class="mod-tag violet">NEUROVIRA</span>
+        <div class="mod-name">Medical Biometrics</div>
+        <div class="mod-desc">Vital monitoring, medical HUD overlays, triage support, and biometric tracking for healthcare and emergency response.</div>
+        <ul class="mod-features">
+          <li>Vitals HUD overlay</li>
+          <li>Vein mapping assist</li>
+          <li>Triage protocol guidance</li>
+          <li>WINGS healthcare bridge</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HUD LIVE DEMO -->
+<section id="hud-demo">
+  <div class="container">
+    <div class="hud-demo-inner">
+      <div class="hud-demo-canvas-wrap reveal">
+        <canvas id="demo-canvas"></canvas>
+        <div id="hud-corner-tl"></div>
+        <div id="hud-corner-br"></div>
+      </div>
+      <div class="hud-demo-text reveal">
+        <div class="section-eyebrow" style="text-align:left">// MUSE OS LIVE INTERFACE</div>
+        <h2 class="section-title" style="text-align:left;font-size:clamp(28px,3.5vw,46px)">
+          The HUD that <em>thinks</em> with you.
+        </h2>
+        <p class="section-desc" style="text-align:left;margin:0 0 24px">
+          MuseOS renders real-time AR overlays directly into the ELARA lens — navigation paths,
+          object recognition, environmental data, and AI responses — all layered transparently
+          over the physical world.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+          <div style="display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:rgba(10,240,200,0.6);">
+            <span style="width:5px;height:5px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px var(--teal);display:inline-block;animation:pip 1.5s infinite;"></span>
+            Real-time object recognition and labeling
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:rgba(10,240,200,0.6);">
+            <span style="width:5px;height:5px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px var(--teal);display:inline-block;animation:pip 1.5s .3s infinite;"></span>
+            Animated perspective navigation overlays
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:rgba(10,240,200,0.6);">
+            <span style="width:5px;height:5px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px var(--teal);display:inline-block;animation:pip 1.5s .6s infinite;"></span>
+            Environmental + biometric status bars
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:rgba(10,240,200,0.6);">
+            <span style="width:5px;height:5px;border-radius:50%;background:var(--sky);box-shadow:0 0 6px var(--sky);display:inline-block;animation:pip 1.5s .9s infinite;"></span>
+            Offline SSD AI knowledge retrieval
+          </div>
+        </div>
+        <div class="hud-mode-pills">
+          <button class="hud-mode-pill active" onclick="setHudMode('nav')">NAVIGATION</button>
+          <button class="hud-mode-pill" onclick="setHudMode('medical')">MEDICAL</button>
+          <button class="hud-mode-pill" onclick="setHudMode('eco')">ECO FIELD</button>
+          <button class="hud-mode-pill" onclick="setHudMode('survival')">SURVIVAL</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WINGS / HEALTHCARE -->
+<section id="wings">
+  <div class="container">
+    <div class="wings-inner">
+      <div class="wings-visual reveal">
+        <canvas id="wings-canvas"></canvas>
+      </div>
+      <div class="reveal">
+        <div class="wings-badge"><div class="wings-badge-dot"></div>NEURONEST + WINGS HEALTHCARE</div>
+        <h2 class="section-title" style="text-align:left;font-size:clamp(28px,3.5vw,46px)">
+          AI that cares for <em>the people</em> we love.
+        </h2>
+        <p class="section-desc" style="text-align:left;margin:0 0 0 0">
+          WINGS (Wearable Intelligence for Navigating and Guiding Support) bridges ELARA's
+          AR platform with healthcare accessibility — giving elderly patients, caregivers,
+          and medical professionals a gentle, intelligent HUD companion.
+        </p>
+        <div class="wings-features">
+          <div class="wf-item">
+            <div class="wf-icon">🧠</div>
+            <div>
+              <div class="wf-title">Memory Assist Mode</div>
+              <div class="wf-desc">Real-time face recognition with name overlays, medication reminders, and daily schedule prompts displayed transparently in the lens.</div>
+            </div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon">💗</div>
+            <div>
+              <div class="wf-title">Vital Monitoring Overlay</div>
+              <div class="wf-desc">Heart rate, O₂ saturation, and activity tracking displayed as a non-intrusive HUD bar. Caregiver alerts on threshold breaches.</div>
+            </div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon">🏥</div>
+            <div>
+              <div class="wf-title">NeuroVira Medical Bridge</div>
+              <div class="wf-desc">Vein mapping assist, triage protocol overlays, and patient data integration for clinical and emergency settings.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCEAN & ECO -->
+<section id="ocean">
+  <div class="container">
+    <div class="section-eyebrow">// NEUROECO · MARINE & ENVIRONMENTAL</div>
+    <h2 class="section-title">Protecting <em>our ocean.</em></h2>
+    <p class="section-desc">
+      From reef health monitoring to invasive species detection, ELARA's NeuroEco module
+      brings AI-powered environmental intelligence to conservation researchers and marine explorers.
+    </p>
+    <div class="ocean-grid reveal">
+      <div class="ocean-card">
+        <div class="ocean-card-visual"><canvas id="ocean-canvas-1"></canvas></div>
+        <div class="ocean-card-body">
+          <div class="ocb-tag">// REEF INTELLIGENCE</div>
+          <div class="ocb-title">Coral Health HUD</div>
+          <div class="ocb-desc">Real-time reef health scoring, bleaching detection, and species identification overlaid directly in the diver's field of view.</div>
+        </div>
+      </div>
+      <div class="ocean-card">
+        <div class="ocean-card-visual"><canvas id="ocean-canvas-2"></canvas></div>
+        <div class="ocean-card-body">
+          <div class="ocb-tag">// DRONE MAPPING</div>
+          <div class="ocb-title">Aerial Survey AI</div>
+          <div class="ocb-desc">Autonomous drone path planning with AI-assisted terrain mapping, habitat classification, and invasive species flagging from above.</div>
+        </div>
+      </div>
+      <div class="ocean-card">
+        <div class="ocean-card-visual"><canvas id="ocean-canvas-3"></canvas></div>
+        <div class="ocean-card-body">
+          <div class="ocb-tag">// FIELD RESEARCH</div>
+          <div class="ocb-title">Bird & Species ID</div>
+          <div class="ocb-desc">Hawaii-specific species library with offline AI identification for native birds, invasive plants, and marine life — no signal required.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KCC -->
+<section id="kcc">
+  <div class="container">
+    <div class="kcc-inner">
+      <div class="reveal">
+        <div class="section-eyebrow" style="text-align:left">// // HAWAIʻI STEM ENGAGEMENT</div>
+        <h2 class="section-title" style="text-align:left;font-size:clamp(28px,3.5vw,46px)">
+          <em>Built independently.</em><br>Right here in Hawaiʻi.
+        </h2>
+        <p class="section-desc" style="text-align:left;margin:0 0 24px">
+          ELARA is independently developed by NeuroMuse LLC in Hawaiʻi, with ongoing educational engagement, demonstrations, and student interaction through local STEM and KCC-related programs.
+        </p>
+        <div class="kcc-badge-row">
+          <span class="kcc-badge teal">LIVE PROTOTYPES</span>
+          <span class="kcc-badge amber">STEM ENGAGEMENT</span>
+          <span class="kcc-badge violet">FIELD TESTING</span>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+            <div>
+              <div class="tl-date">2025 Q1</div>
+              <div class="tl-event">Prototype Initiation</div>
+              <div class="tl-detail">ELARA HUD v0.1 concept developed. Initial ELARA prototype systems independently developed in Hawaiʻi.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+            <div>
+              <div class="tl-date">2026 Q2</div>
+              <div class="tl-event">MuseOS Development</div>
+              <div class="tl-detail">MuseOS interface engine, AR overlay systems, and modular architecture developed by NeuroMuse LLC.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+            <div>
+              <div class="tl-date">2026 Q3</div>
+              <div class="tl-event">Field Test Build 0.7.4</div>
+              <div class="tl-detail">6 modules operational. NeuroEco and WINGS healthcare prototyped.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="border-color:var(--amber)"><div class="tl-dot-inner" style="background:var(--amber)"></div></div>
+            <div>
+              <div class="tl-date" style="color:var(--amber)">2026 Q4</div>
+              <div class="tl-event">KCC Research Fair Demo</div>
+              <div class="tl-detail">Public demonstration at Kapiʻolani Community College Innovation Fair.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-eyebrow" style="text-align:left;margin-bottom:20px">// COLLABORATION UNITS</div>
+        <div class="collab-grid">
+          <div class="collab-card">
+            <div class="cc-dept">ENGINEERING</div>
+            <div class="cc-name">Hardware Integration</div>
+            <div class="cc-role">Raspberry Pi · Sensors · Wearables</div>
+          </div>
+          <div class="collab-card">
+            <div class="cc-dept">COMPUTER SCIENCE</div>
+            <div class="cc-name">AI Engine Dev</div>
+            <div class="cc-role">MuseOS · Vision CV · NLP</div>
+          </div>
+          <div class="collab-card">
+            <div class="cc-dept">NURSING / ALLIED HEALTH</div>
+            <div class="cc-name">WINGS Healthcare</div>
+            <div class="cc-role">NeuroNest · NeuroVira design</div>
+          </div>
+          <div class="collab-card">
+            <div class="cc-dept">NATURAL SCIENCE</div>
+            <div class="cc-name">NeuroEco Data</div>
+            <div class="cc-role">Marine biology · Field research</div>
+          </div>
+          <div class="collab-card">
+            <div class="cc-dept">DESIGN / MEDIA</div>
+            <div class="cc-name">HUD Interface UX</div>
+            <div class="cc-role">AR overlay design · Branding</div>
+          </div>
+          <div class="collab-card">
+            <div class="cc-dept">BUSINESS</div>
+            <div class="cc-name">Venture Development</div>
+            <div class="cc-role">Investor pitch · Commercialization</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PITCH DECK -->
+<section id="pitch">
+  <div class="container">
+    <div class="section-eyebrow">// INVESTOR OVERVIEW</div>
+    <h2 class="section-title">The <em>opportunity.</em></h2>
+    <p class="section-desc">A modular AR AI platform with applications in healthcare, conservation, defense, and everyday life — built from Hawaiʻi, designed for every world.</p>
+
+    <div class="pitch-slide reveal">
+      <div class="pitch-header">
+        <div class="ph-left">
+          <div class="ph-slide-num">SLIDE 01 / EXECUTIVE OVERVIEW</div>
+          <h3 class="ph-title">ELARA™ + NeuroMuse™ — <em>The Platform</em></h3>
+        </div>
+        <div class="ph-right">
+          CONFIDENTIAL · INVESTOR USE ONLY<br>
+          BUILD 0.7.4-β · 2026<br>
+          STEM Demonstration & Engagement
+        </div>
+      </div>
+      <div class="pitch-body">
+        <div class="pb-col">
+          <div class="pb-section-title">KEY METRICS</div>
+          <div class="pb-metric-grid">
+            <div class="pb-metric"><div class="pb-metric-val">6</div><div class="pb-metric-label">MODULES BUILT</div></div>
+            <div class="pb-metric"><div class="pb-metric-val" style="color:var(--sky)">3</div><div class="pb-metric-label">RESEARCH SECTORS</div></div>
+            <div class="pb-metric"><div class="pb-metric-val" style="color:var(--amber)">v0.7</div><div class="pb-metric-label">PROTOTYPE STAGE</div></div>
+            <div class="pb-metric">
+            <div class="pb-metric-val" style="color:var(--violet)">LOCAL</div>
+            <div class="pb-metric-label">STEM ENGAGEMENT</div>
+        </div>
+
+          <div class="pb-section-title">MARKET APPLICATIONS</div>
+          <ul class="pb-list">
+            <li>Wearable AR healthcare for elderly care and clinical settings</li>
+            <li>Marine conservation and ocean environmental monitoring</li>
+            <li>Field operations: survival, emergency response, defense</li>
+            <li>Everyday navigation, accessibility, and daily living assist</li>
+            <li>Independent innovation supporting Hawaiʻi STEM engagement</li>
+          </ul>
+        </div>
+        <div class="pb-col">
+          <div class="pb-section-title">COMPETITIVE ADVANTAGE</div>
+          <ul class="pb-list">
+            <li>Modular architecture — domain modules load on demand</li>
+            <li>Offline-first: SSD knowledge library, no signal required</li>
+            <li>Hawaii-rooted: ecological data, cultural context, local team</li>
+            <li>Healthcare + conservation dual-use platform</li>
+            <li>Independent development supported by Hawaiʻi STEM engagement</li>
+            <li>Buildable prototype — real hardware, not just concept</li>
+          </ul>
+
+          <div class="pb-section-title" style="margin-top:20px">TECHNOLOGY STACK</div>
+          <ul class="pb-list">
+            <li>MuseOS 2.1 — custom AR HUD operating system</li>
+            <li>Raspberry Pi Zero 2 W edge compute + custom sensor array</li>
+            <li>Computer vision + real-time object recognition</li>
+            <li>Offline NLP + SSD knowledge retrieval engine</li>
+            <li>ELARA smart glasses prototype — field test build</li>
+          </ul>
+        </div>
+      <div class="live-demo-box">
+    <div class="demo-status">SYSTEM STATUS</div>
+
+    <h3>WORKING PROTOTYPE DEMO</h3>
+
+    <div class="status-grid">
+        <div><span>HUD Interface:</span> Live</div>
+        <div><span>Memory Engine:</span> Local SSD</div>
+        <div><span>Knowledge Files:</span> Markdown-Based</div>
+        <div><span>Threat Response:</span> Active</div>
+    </div>
+
+    <div class="demo-section">
+        <h4>Current Demo</h4>
+        <ul>
+            <li>Hazard Lookup</li>
+            <li>Species Recognition</li>
+            <li>NeuroEco Field Intelligence</li>
+            <li>Offline Knowledge Search</li>
+        </ul>
+    </div>
+
+    <div class="demo-section">
+        <h4>Next Build</h4>
+        <p>CipherVision OCR + Translation Layer</p>
+    </div>
+</div>
+      <div class="pitch-footer">
+        <div class="pf-brand">ELARA™ · NEUROMUSE™</div>
+        <div class="pf-tagline">ELEGANT LENSES AUGMENTED REALITY ASSISTANT</div>
+        <div class="pf-built">BUILT IN HAWAIʻI ·  2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEC ONE-PAGER -->
+<section id="spec">
+  <div class="container">
+    <div class="section-eyebrow">// PRODUCT SPECIFICATION</div>
+    <h2 class="section-title"><em>Technical</em> overview.</h2>
+    <p class="section-desc">A concise reference document suitable for engineering partners, KCC collaborators, and technical investors.</p>
+
+    <div class="spec-doc reveal">
+      <div class="spec-header">
+        <div>
+          <h3 class="sh-title">ELARA™ System Specification</h3>
+          <div style="font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--muted);margin-top:4px">NeuroMuse™ AR HUD Ecosystem · Field Test Build 0.7.4-β</div>
+        </div>
+        <div class="sh-meta">
+          <div>VERSION <span>0.7.4-β</span></div>
+          <div>OS <span>MUSE OS 2.1</span></div>
+          <div>STATUS <span>PROTOTYPE ACTIVE</span></div>
+          <div>DEVELOPMENT <span>INDEPENDENT BUILD</span></div>
+        </div>
+      </div>
+      <div class="spec-body">
+
+        <div class="spec-section">
+          <div class="spec-section-title">HARDWARE PLATFORM <div class="sst-line"></div></div>
+          <div class="spec-grid">
+            <div class="spec-item"><div class="si-key">COMPUTE</div><div class="si-val">Raspberry Pi zero 2W· 8GB</div></div>
+            <div class="spec-item"><div class="si-key">DISPLAY</div><div class="si-val teal">AR Smart Lens HUD</div></div>
+            <div class="spec-item"><div class="si-key">CAMERA</div><div class="si-val">12MP · 4K · 30fps</div></div>
+            <div class="spec-item"><div class="si-key">CONNECTIVITY</div><div class="si-val">WiFi 6 · BLE 5.2 · LTE</div></div>
+            <div class="spec-item"><div class="si-key">BATTERY</div><div class="si-val">6–8 hr field use</div></div>
+            <div class="spec-item"><div class="si-key">SENSORS</div><div class="si-val">IMU · GPS · Temp · Biometric</div></div>
+          </div>
+        </div>
+
+        <div class="spec-section">
+          <div class="spec-section-title">SOFTWARE & AI <div class="sst-line"></div></div>
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>COMPONENT</th><th>VERSION</th><th>FUNCTION</th><th>OFFLINE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>MuseOS</td><td>2.1</td><td>AR HUD operating system, module manager</td><td>✓ Full</td></tr>
+              <tr><td>Vision.CV</td><td>2.1.0</td><td>Real-time object detection + recognition</td><td>✓ Full</td></tr>
+              <tr><td>ELARA-Lite NLP</td><td>v0.7</td><td>Voice commands + AI response engine</td><td>✓ Full</td></tr>
+              <tr><td>SSD Knowledge</td><td>64GB</td><td>Hawaii ecology, medical, terrain database</td><td>✓ Full</td></tr>
+              <tr><td>NeuroFlow Nav</td><td>1.3</td><td>AR navigation path + GPS overlay</td><td>✓ Full</td></tr>
+              <tr><td>NeuroEco ML</td><td>0.8</td><td>Species ID, reef health classification</td><td>Partial</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="spec-section">
+          <div class="spec-section-title">MODULE STATUS <div class="sst-line"></div></div>
+          <table class="spec-table">
+            <thead><tr><th>MODULE</th><th>DOMAIN</th><th>STATUS</th><th>NOTES</th></tr></thead>
+            <tbody>
+              <tr><td>NeuroNest</td><td>Healthcare / Home</td><td style="color:var(--teal)">ACTIVE</td><td>Memory assist, face ID, medication HUD</td></tr>
+              <tr><td>NeuroSurvivor</td><td>Field / Survival</td><td style="color:var(--teal)">ACTIVE</td><td>Terrain, weather, species identification</td></tr>
+              <tr><td>NeuroGuardian</td><td>Safety / Defense</td><td style="color:var(--teal)">ACTIVE</td><td>Hazard detection, threat overlay</td></tr>
+              <tr><td>NeuroFlow</td><td>Navigation</td><td style="color:var(--teal)">ACTIVE</td><td>AR path, waypoint, GPS HUD</td></tr>
+              <tr><td>NeuroEco</td><td>Marine / Ecology</td><td style="color:var(--amber)">BETA</td><td>Reef, bird ID, drone survey</td></tr>
+              <tr><td>NeuroVira</td><td>Medical / WINGS</td><td style="color:var(--amber)">BETA</td><td>Vitals, vein map, triage protocols</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      <div class="spec-footer">
+        <div class="sf-brand">ELARA™ · NEUROMUSE™</div>
+        <div>BUILT IN HAWAIʻI · // HAWAIʻI STEM ENGAGEMENT</div>
+        <div>CONFIDENTIAL · BUILD 0.7.4-β · 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- BUSINESS ASSESSMENT / CUSTOMERSCOUT -->
+<section id="business-assessment">
+  <div class="container">
+    <div class="section-eyebrow">// ELARA CUSTOMERSCOUT</div>
+
+    <h2 class="section-title">
+      Create your <em>AI business growth assessment.</em>
+    </h2>
+
+    <p class="section-desc">
+      Tell ELARA what kind of business you are building. CustomerScout analyzes your industry,
+      recommends NeuroMuse agent modules, and creates a growth roadmap.
+    </p>
+
+    <div class="spec-doc reveal" style="max-width:760px;">
+      <div class="spec-header">
+        <div>
+          <h3 class="sh-title">Request ELARA Assessment</h3>
+          <div style="font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--muted);margin-top:4px">
+            EARLY ACCESS · NEUROMUSE CUSTOMERSCOUT
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-body">
+        <div class="spec-section">
+          <div class="spec-section-title">
+            BUSINESS INTAKE <div class="sst-line"></div>
+          </div>
+
+          <input 
+ id="customerBusiness"
+ class="assessment-input" 
+ placeholder="Business name"
+>
+
+<input 
+ id="customerIndustry"
+ class="assessment-input" 
+ placeholder="Industry / business type"
+>
+
+<input 
+ id="customerGoal"
+ class="assessment-input" 
+ placeholder="Main goal or challenge"
+>
+
+<input 
+ id="customerContact"
+ class="assessment-input" 
+ placeholder="Email / contact"
+>
+
+          <a href="javascript:void(0)" onclick="submitAssessment()" class="btn-primary" style="margin-top:18px;">
+            REQUEST EARLY ACCESS
+          </a>
+
+          <p style="font-size:12px;color:rgba(220,240,255,0.5);line-height:1.7;margin-top:18px;">
+            For early access, NeuroMuse reviews the intake and generates a custom ELARA
+            business intelligence report. No sensitive documents required for the first assessment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-label">// CONNECT WITH THE TEAM</div>
+      <h2 class="cta-title">Built in <em>Hawaiʻi.</em><br>Ready for the world.</h2>
+      <p class="cta-desc">
+       ELARA and NeuroMuse represent a Hawaiʻi-built technology initiative centered around healthcare accessibility, ocean intelligence, and wearable AI — independently developed by NeuroMuse LLC, with local STEM engagement and community participation.
+      </p>
+      <div class="cta-actions">
+        <a href="#" class="btn-primary">REQUEST LIVE DEMO</a>
+        <a href="#" class="btn-outline">INVESTOR INQUIRIES</a>
+        <a href="#" class="btn-outline">COMMUNITY ENGAGEMENT</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">ELARA™ · NEUROMUSE™</div>
+  <div class="footer-center">BUILT IN HAWAIʻI · NEUROMUSE LLC · 2026</div>
+  <div class="footer-right">PROTOTYPE BUILD 0.7.4-β · ALL RIGHTS RESERVED</div>
+</footer>
+
+<script>
+/* ════════════════════════════════════════
+   ELARA Platform — Canvas Systems
+════════════════════════════════════════ */
+
+const T = () => 'DM Mono, monospace';
+const C = 'rgba(10,240,200,';
+const CS = 'rgba(56,189,248,';
+let globalFrame = 0;
+
+function rnd(a,b){return Math.random()*(b-a)+a;}
+
+/* ── Resize helper ── */
+function fitCanvas(canvas) {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width  = rect.width;
+  canvas.height = rect.height;
+}
+
+/* ══════════════════════
+   HERO CANVAS
+══════════════════════ */
+const heroCanvas = document.getElementById('hero-canvas');
+const hctx = heroCanvas.getContext('2d');
+
+function drawHeroHUD(frame) {
+  fitCanvas(heroCanvas);
+  const W = heroCanvas.width, H = heroCanvas.height;
+  hctx.clearRect(0,0,W,H);
+
+  // Dark environment sim
+  const bg = hctx.createLinearGradient(0,0,0,H);
+  bg.addColorStop(0,'#060d18'); bg.addColorStop(1,'#020810');
+  hctx.fillStyle=bg; hctx.fillRect(0,0,W,H);
+
+  // Grid overlay
+  hctx.strokeStyle='rgba(10,240,200,0.04)'; hctx.lineWidth=.5;
+  for(let x=0;x<W;x+=32){hctx.beginPath();hctx.moveTo(x,0);hctx.lineTo(x,H);hctx.stroke();}
+  for(let y=0;y<H;y+=32){hctx.beginPath();hctx.moveTo(0,y);hctx.lineTo(W,y);hctx.stroke();}
+
+  // Nav path perspective
+  const vp={x:W*.5,y:H*.38};
+  const pw=W*.4,gy=H;
+  const pg=hctx.createLinearGradient(0,vp.y,0,gy);
+  pg.addColorStop(0,`${C}0)`);pg.addColorStop(.4,`${C}.09)`);pg.addColorStop(1,`${C}.04)`);
+  hctx.fillStyle=pg;
+  hctx.beginPath();hctx.moveTo(vp.x-2,vp.y);hctx.lineTo(vp.x-pw/2,gy);hctx.lineTo(vp.x+pw/2,gy);hctx.lineTo(vp.x+2,vp.y);hctx.closePath();hctx.fill();
+  hctx.strokeStyle=`${C}.45)`;hctx.lineWidth=1.2;
+  hctx.beginPath();hctx.moveTo(vp.x-2,vp.y);hctx.lineTo(vp.x-pw/2,gy);hctx.stroke();
+  hctx.beginPath();hctx.moveTo(vp.x+2,vp.y);hctx.lineTo(vp.x+pw/2,gy);hctx.stroke();
+  // Dashes
+  const off=(frame*0.5)%44;
+  hctx.strokeStyle=`${C}.3)`;hctx.setLineDash([10,18]);hctx.lineDashOffset=-off;
+  hctx.beginPath();hctx.moveTo(vp.x,vp.y);hctx.lineTo(vp.x,gy);hctx.stroke();
+  hctx.setLineDash([]);hctx.lineDashOffset=0;
+
+  // Object label boxes
+  const labels=[
+    {x:.28,y:.22,w:.18,h:.14,name:'DIAMOND HEAD',conf:98,t:'landmark'},
+    {x:.55,y:.32,w:.16,h:.1,name:'KAPI\'OLANI PARK',conf:91,t:'poi'},
+    {x:.14,y:.5,w:.14,h:.08,name:'WAIKIKI BEACH',conf:88,t:'poi'},
+  ];
+  labels.forEach((lb,i)=>{
+    const lx=lb.x*W,ly=lb.y*H,lw=lb.w*W,lh=lb.h*H;
+    const pulse=(Math.sin(frame*.04+i*.8)+1)/2;
+    hctx.strokeStyle=`${C}${.5+pulse*.25})`;hctx.lineWidth=1;
+    hctx.strokeRect(lx,ly,lw,lh);
+    // Corner ticks
+    [[lx,ly],[lx+lw,ly],[lx,ly+lh],[lx+lw,ly+lh]].forEach(([cx,cy],j)=>{
+      hctx.beginPath();
+      const dx=j%2===0?6:-6,dy=j<2?6:-6;
+      hctx.moveTo(cx,cy+dy);hctx.lineTo(cx,cy);hctx.lineTo(cx+dx,cy);
+      hctx.stroke();
+    });
+    // Chip
+    const chipW=lw+2;
+    hctx.fillStyle='rgba(2,8,18,0.75)';
+    hctx.fillRect(lx-1,ly-18,chipW,16);
+    hctx.strokeStyle=`${C}.25)`;hctx.lineWidth=.7;
+    hctx.strokeRect(lx-1,ly-18,chipW,16);
+    hctx.font=`${H*.028}px ${T()}`;hctx.fillStyle=`${C}.8)`;hctx.textAlign='left';
+    hctx.fillText(lb.name,lx+4,ly-6);
+    hctx.fillStyle=`${C}.4)`;
+    hctx.fillText(lb.conf+'%',lx+chipW-32,ly-6);
+  });
+
+  // Status bar
+  const sbY=H*.04,sbH=H*.07;
+  hctx.fillStyle='rgba(2,8,18,0.72)';
+  hctx.fillRect(W*.1,sbY,W*.8,sbH);
+  hctx.strokeStyle=`${C}.18)`;hctx.lineWidth=.8;
+  hctx.strokeRect(W*.1,sbY,W*.8,sbH);
+  const items=[['PWR','74%'],['TEMP','42°C'],['SIG','LTE·5'],['FPS','30'],['GPS','LOCK']];
+  items.forEach(([k,v],i)=>{
+    const ix=W*.14+i*(W*.8/5.5);
+    hctx.font=`${H*.024}px ${T()}`;hctx.fillStyle=`${C}.4)`;hctx.textAlign='left';
+    hctx.fillText(k,ix,sbY+sbH*.42);
+    hctx.fillStyle=`${C}.85)`;
+    hctx.fillText(v,ix,sbY+sbH*.82);
+  });
+
+  // Central reticle
+  const rx=W*.5,ry=H*.5,gap=14,len=18;
+  hctx.strokeStyle=`${C}.22)`;hctx.lineWidth=.8;
+  [[rx-len-gap,ry,rx-gap,ry],[rx+gap,ry,rx+len+gap,ry],[rx,ry-len-gap,rx,ry-gap],[rx,ry+gap,rx,ry+len+gap]].forEach(([x1,y1,x2,y2])=>{
+    hctx.beginPath();hctx.moveTo(x1,y1);hctx.lineTo(x2,y2);hctx.stroke();
+  });
+  hctx.fillStyle=`${C}.55)`;
+  hctx.beginPath();hctx.arc(rx,ry,1.5,0,Math.PI*2);hctx.fill();
+
+  // Scan sweep
+  const scanY=(frame*1.2)%(H+4)-2;
+  const sg=hctx.createLinearGradient(0,scanY-4,0,scanY+4);
+  sg.addColorStop(0,'transparent');sg.addColorStop(.5,`${C}.08)`);sg.addColorStop(1,'transparent');
+  hctx.fillStyle=sg;hctx.fillRect(0,scanY-4,W,8);
+}
+
+/* ══════════════════════
+   DEMO CANVAS (HUD modes)
+══════════════════════ */
+const demoCanvas = document.getElementById('demo-canvas');
+const dctx = demoCanvas.getContext('2d');
+let hudMode = 'nav';
+function setHudMode(m) {
+  hudMode=m;
+  document.querySelectorAll('.hud-mode-pill').forEach(p=>{
+    p.classList.toggle('active', p.textContent.toLowerCase().includes(m==='eco'?'eco':m==='survival'?'surv':m));
+  });
+}
+
+function drawDemoHUD(frame) {
+  fitCanvas(demoCanvas);
+  const W=demoCanvas.width,H=demoCanvas.height;
+  dctx.clearRect(0,0,W,H);
+  const bg=dctx.createLinearGradient(0,0,0,H);
+  bg.addColorStop(0,'#040c18');bg.addColorStop(1,'#020810');
+  dctx.fillStyle=bg;dctx.fillRect(0,0,W,H);
+
+  if(hudMode==='nav')      drawNavMode(dctx,W,H,frame);
+  else if(hudMode==='medical') drawMedicalMode(dctx,W,H,frame);
+  else if(hudMode==='eco') drawEcoMode(dctx,W,H,frame);
+  else if(hudMode==='survival') drawSurvivalMode(dctx,W,H,frame);
+
+  // Common HUD chrome
+  dctx.strokeStyle=`${C}.25)`;dctx.lineWidth=1;
+  [[0,0,16,0],[0,0,0,16],[W-16,0,W,0],[W,0,W,16],[0,H-16,0,H],[0,H,16,H],[W,H-16,W,H],[W-16,H,W,H]].forEach(([x1,y1,x2,y2])=>{
+    dctx.beginPath();dctx.moveTo(x1,y1);dctx.lineTo(x2,y2);dctx.stroke();
+  });
+  dctx.font=`${H*.04}px ${T()}`;dctx.fillStyle=`${C}.3)`;dctx.textAlign='right';
+  dctx.fillText('ELARA™ · MUSE OS',W-12,H-8);
+}
+
+function drawNavMode(ctx,W,H,f){
+  // Nav path
+  const vp={x:W*.5,y:H*.4};
+  const pw=W*.35,gy=H;
+  const pg=ctx.createLinearGradient(0,vp.y,0,gy);
+  pg.addColorStop(0,`${C}0)`);pg.addColorStop(.35,`${C}.1)`);pg.addColorStop(1,`${C}.04)`);
+  ctx.fillStyle=pg;
+  ctx.beginPath();ctx.moveTo(vp.x-2,vp.y);ctx.lineTo(vp.x-pw/2,gy);ctx.lineTo(vp.x+pw/2,gy);ctx.lineTo(vp.x+2,vp.y);ctx.closePath();ctx.fill();
+  ctx.strokeStyle=`${C}.5)`;ctx.lineWidth=1.2;
+  ctx.beginPath();ctx.moveTo(vp.x-2,vp.y);ctx.lineTo(vp.x-pw/2,gy);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(vp.x+2,vp.y);ctx.lineTo(vp.x+pw/2,gy);ctx.stroke();
+  const off=(f*.45)%44;ctx.strokeStyle=`${C}.3)`;ctx.setLineDash([10,18]);ctx.lineDashOffset=-off;
+  ctx.beginPath();ctx.moveTo(vp.x,vp.y);ctx.lineTo(vp.x,gy);ctx.stroke();
+  ctx.setLineDash([]);ctx.lineDashOffset=0;
+  // Labels
+  ctx.fillStyle='rgba(2,8,18,0.75)';ctx.beginPath();ctx.roundRect(vp.x-55,H*.16,110,20,2);ctx.fill();
+  ctx.strokeStyle=`${C}.3)`;ctx.lineWidth=.8;ctx.beginPath();ctx.roundRect(vp.x-55,H*.16,110,20,2);ctx.stroke();
+  ctx.font=`${H*.055}px ${T()}`;ctx.fillStyle=`${C}.8)`;ctx.textAlign='center';
+  ctx.fillText('KALĀKAUA AVE · 340M',vp.x,H*.16+14);
+  // Waypoint
+  const a=Math.sin(f*.06)*.3+.7;
+  ctx.save();ctx.globalAlpha=a;ctx.fillStyle=`${C}.85)`;
+  ctx.beginPath();ctx.moveTo(vp.x,H*.26);ctx.lineTo(vp.x+12,H*.34);ctx.lineTo(vp.x+5,H*.31);ctx.lineTo(vp.x+5,H*.44);ctx.lineTo(vp.x-5,H*.44);ctx.lineTo(vp.x-5,H*.31);ctx.lineTo(vp.x-12,H*.34);ctx.closePath();ctx.fill();ctx.restore();
+  // Minimap
+  const mx=12,my=H*.08,mw=W*.18,mh=W*.18;
+  ctx.fillStyle='rgba(2,8,18,0.75)';ctx.beginPath();ctx.roundRect(mx,my,mw,mh,2);ctx.fill();
+  ctx.strokeStyle=`${C}.2)`;ctx.lineWidth=.8;ctx.beginPath();ctx.roundRect(mx,my,mw,mh,2);ctx.stroke();
+  ctx.strokeStyle=`${C}.06)`;ctx.lineWidth=.4;
+  for(let g=0;g<6;g++){ctx.beginPath();ctx.moveTo(mx+g*(mw/5),my);ctx.lineTo(mx+g*(mw/5),my+mh);ctx.stroke();ctx.beginPath();ctx.moveTo(mx,my+g*(mh/5));ctx.lineTo(mx+mw,my+g*(mh/5));ctx.stroke();}
+  ctx.strokeStyle=`${C}.4)`;ctx.lineWidth=1.2;ctx.setLineDash([3,4]);
+  ctx.beginPath();ctx.moveTo(mx+mw*.5,my+mh*.75);ctx.lineTo(mx+mw*.72,my+mh*.28);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=`${C}.9)`;ctx.shadowColor=`${C}.6)`;ctx.shadowBlur=5;
+  ctx.beginPath();ctx.arc(mx+mw*.5,my+mh*.75,2.5,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+}
+
+function drawMedicalMode(ctx,W,H,f){
+  ctx.fillStyle='rgba(4,14,28,0.9)';ctx.fillRect(0,0,W,H);
+  // Arm silhouette
+  ctx.fillStyle='rgba(15,8,6,0.85)';
+  ctx.beginPath();ctx.ellipse(W*.5,H*.58,W*.14,H*.32,0,0,Math.PI*2);ctx.fill();
+  // Vein mapping
+  const veins=[[[W*.42,H*.28],[W*.44,H*.52],[W*.44,H*.78]],[[W*.5,H*.26],[W*.5,H*.52],[W*.51,H*.78]],[[W*.58,H*.3],[W*.56,H*.52],[W*.55,H*.78]]];
+  const pulse=(Math.sin(f*.08)+1)/2;
+  ctx.strokeStyle=`rgba(96,165,250,${.3+pulse*.35})`;ctx.lineWidth=1.5;
+  veins.forEach(pts=>{ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);pts.slice(1).forEach(p=>ctx.bezierCurveTo(p[0]+8,p[1]-30,p[0]-8,p[1]-10,p[0],p[1]));ctx.stroke();});
+  // Pulse glow
+  const pg2=ctx.createRadialGradient(W*.5,H*.52,0,W*.5,H*.52,W*.12);
+  pg2.addColorStop(0,`rgba(96,165,250,${pulse*.18})`);pg2.addColorStop(1,'transparent');
+  ctx.fillStyle=pg2;ctx.beginPath();ctx.arc(W*.5,H*.52,W*.12,0,Math.PI*2);ctx.fill();
+  // HUD overlay
+  ctx.font=`${H*.05}px ${T()}`;ctx.fillStyle='rgba(96,165,250,0.8)';ctx.textAlign='center';
+  ctx.fillText('VEIN MAPPING · ACTIVE',W*.5,H*.16);
+  ctx.font=`${H*.042}px ${T()}`;ctx.fillStyle=`${C}.7)`;
+  ctx.fillText('PULSE: 72 BPM  ·  O₂: 98%',W*.5,H*.22);
+  ctx.fillText('NeuroVira · WINGS HEALTHCARE',W*.5,H*.28);
+}
+
+function drawEcoMode(ctx,W,H,f){
+  // Ocean sim
+  const og=ctx.createLinearGradient(0,H*.3,0,H);
+  og.addColorStop(0,'rgba(15,80,120,0.6)');og.addColorStop(1,'rgba(5,40,70,0.4)');
+  ctx.fillStyle=og;ctx.fillRect(0,H*.3,W,H);
+  // Sky
+  const sky2=ctx.createLinearGradient(0,0,0,H*.3);
+  sky2.addColorStop(0,'#101f2e');sky2.addColorStop(1,'#1a4060');
+  ctx.fillStyle=sky2;ctx.fillRect(0,0,W,H*.3);
+  // Fish detection zones
+  [[W*.3,H*.62,1],[W*.52,H*.7,.8],[W*.68,H*.58,.6]].forEach(([fx,fy,a],i)=>{
+    const pulse=(Math.sin(f*.05+i*1.2)+1)/2;
+    const gr=ctx.createRadialGradient(fx,fy,0,fx,fy,35+pulse*8);
+    gr.addColorStop(0,`${C}${a*.28})`);gr.addColorStop(1,'transparent');
+    ctx.fillStyle=gr;ctx.beginPath();ctx.arc(fx,fy,35+pulse*8,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle=`${C}${a*.55})`;ctx.lineWidth=1;ctx.setLineDash([3,5]);
+    ctx.beginPath();ctx.arc(fx,fy,35,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+    ctx.font=`${H*.038}px ${T()}`;ctx.fillStyle=`${C}${a*.7})`;ctx.textAlign='center';
+    ctx.fillText(['SCHOOL·HIGH','REEF EDGE','DEEP POCKET'][i],fx,fy-40);
+    ctx.fillText(['CONF 94%','CONF 78%','CONF 61%'][i],fx,fy-30);
+  });
+  // Reef health bar
+  ctx.fillStyle='rgba(2,8,18,0.75)';ctx.beginPath();ctx.roundRect(12,H*.08,W*.28,H*.22,3);ctx.fill();
+  ctx.strokeStyle=`${C}.2)`;ctx.lineWidth=.8;ctx.beginPath();ctx.roundRect(12,H*.08,W*.28,H*.22,3);ctx.stroke();
+  ctx.font=`${H*.038}px ${T()}`;ctx.fillStyle=`${C}.5)`;ctx.textAlign='left';
+  ctx.fillText('REEF HEALTH',18,H*.13);
+  ['CORAL COVER: 44%','SPECIES DIV: HIGH','BLEACH RISK: LOW','CLARITY: 68FT'].forEach((t,i)=>{
+    ctx.fillStyle=i===2?'rgba(74,222,128,0.7)':`${C}.65)`;
+    ctx.fillText(t,18,H*.17+i*H*.038);
+  });
+}
+
+function drawSurvivalMode(ctx,W,H,f){
+  // Terrain
+  const tg=ctx.createLinearGradient(0,0,0,H);
+  tg.addColorStop(0,'#060e06');tg.addColorStop(1,'#030803');
+  ctx.fillStyle=tg;ctx.fillRect(0,0,W,H);
+  // Path arrows
+  for(let i=0;i<6;i++){
+    const py=H*(.38+i*.1);const a=.7-i*.1;
+    ctx.fillStyle=`${C}${a})`;
+    ctx.beginPath();ctx.moveTo(W*.5-12,py);ctx.lineTo(W*.5+12,py);ctx.lineTo(W*.5+6,py-8);ctx.moveTo(W*.5+12,py);ctx.lineTo(W*.5+6,py+8);ctx.fill();
+  }
+  // Weather alert
+  const wa=(Math.sin(f*.08)+1)/2;
+  ctx.fillStyle='rgba(2,8,18,0.75)';ctx.beginPath();ctx.roundRect(W*.58,H*.12,W*.36,H*.25,3);ctx.fill();
+  ctx.strokeStyle=`rgba(245,158,11,${.3+wa*.25})`;ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(W*.58,H*.12,W*.36,H*.25,3);ctx.stroke();
+  ctx.font=`${H*.048}px serif`;ctx.fillStyle=`rgba(245,158,11,${.6+wa*.3})`;ctx.textAlign='center';
+  ctx.fillText('⛈',W*.76,H*.22);
+  ctx.font=`${H*.038}px ${T()}`;ctx.fillStyle='rgba(245,158,11,0.8)';
+  ctx.fillText('STORM · 12MI NE',W*.76,H*.29);
+  ctx.fillStyle=`${C}.6)`;ctx.fillText('WIND: 22KT · AVOID',W*.76,H*.34);
+  // Species
+  ctx.fillStyle='rgba(2,8,18,0.75)';ctx.beginPath();ctx.roundRect(12,H*.12,W*.38,H*.25,3);ctx.fill();
+  ctx.strokeStyle=`${C}.2)`;ctx.lineWidth=.8;ctx.beginPath();ctx.roundRect(12,H*.12,W*.38,H*.25,3);ctx.stroke();
+  ctx.font=`${H*.038}px ${T()}`;ctx.fillStyle=`${C}.5)`;ctx.textAlign='left';
+  ctx.fillText('SPECIES DETECTED',18,H*.18);
+  ['🌺 ʻŌhiʻa Lehua','🐦 ʻApapane · 94%','🌿 Strawberry Guava⚠'].forEach((t,i)=>{
+    ctx.fillStyle=i===2?'rgba(245,158,11,0.7)':`${C}.7)`;
+    ctx.fillText(t,18,H*.22+i*H*.042);
+  });
+}
+
+/* ══════════════════════
+   WINGS CANVAS
+══════════════════════ */
+const wingsCanvas = document.getElementById('wings-canvas');
+const wctx = wingsCanvas.getContext('2d');
+function drawWings(f){
+  fitCanvas(wingsCanvas);
+  const W=wingsCanvas.width,H=wingsCanvas.height;
+  wctx.clearRect(0,0,W,H);
+  wctx.fillStyle='#020810';wctx.fillRect(0,0,W,H);
+  // Person silhouette
+  wctx.fillStyle='rgba(8,18,34,0.9)';
+  wctx.beginPath();wctx.ellipse(W*.5,H*.68,W*.1,H*.26,0,0,Math.PI*2);wctx.fill();
+  wctx.beginPath();wctx.arc(W*.5,H*.36,W*.1,0,Math.PI*2);wctx.fill();
+  // Glasses glow
+  wctx.strokeStyle=`${CS}.55)`;wctx.lineWidth=1.5;wctx.shadowColor=`${CS}.4)`;wctx.shadowBlur=8;
+  wctx.beginPath();wctx.ellipse(W*.44,H*.35,W*.056,H*.022,-.05,0,Math.PI*2);wctx.stroke();
+  wctx.beginPath();wctx.ellipse(W*.56,H*.35,W*.056,H*.022,.05,0,Math.PI*2);wctx.stroke();
+  wctx.shadowBlur=0;
+  // HUD overlay
+  const pulse=(Math.sin(f*.06)+1)/2;
+  // Vitals panel
+  wctx.fillStyle='rgba(2,8,18,0.78)';wctx.beginPath();wctx.roundRect(W*.04,H*.04,W*.38,H*.32,3);wctx.fill();
+  wctx.strokeStyle=`${CS}.22)`;wctx.lineWidth=.8;wctx.beginPath();wctx.roundRect(W*.04,H*.04,W*.38,H*.32,3);wctx.stroke();
+  wctx.font=`${H*.04}px ${T()}`;wctx.fillStyle=`${CS}.5)`;wctx.textAlign='left';
+  wctx.fillText('WINGS HEALTHCARE',W*.07,H*.1);
+  const vitals=[['HR',`${70+Math.round(pulse*4)} BPM`,`rgba(96,165,250,0.8)`],['O₂','97%','rgba(74,222,128,0.8)'],['TEMP','98.4°F',`${C}.8)`],['ALERT','NOMINAL','rgba(74,222,128,0.8)']];
+  vitals.forEach(([k,v,col],i)=>{
+    wctx.fillStyle=`${CS}.38)`;wctx.fillText(k,W*.07,H*.17+i*H*.05);
+    wctx.fillStyle=col;wctx.fillText(v,W*.22,H*.17+i*H*.05);
+  });
+  // Memory assist
+  wctx.fillStyle='rgba(2,8,18,0.78)';wctx.beginPath();wctx.roundRect(W*.58,H*.04,W*.38,H*.22,3);wctx.fill();
+  wctx.strokeStyle=`${C}.2)`;wctx.lineWidth=.8;wctx.beginPath();wctx.roundRect(W*.58,H*.04,W*.38,H*.22,3);wctx.stroke();
+  wctx.font=`${H*.038}px ${T()}`;wctx.fillStyle=`${C}.5)`;wctx.textAlign='left';
+  wctx.fillText('MEMORY ASSIST',W*.61,H*.1);
+  ['MEDICATION: 2PM','LAST MEAL: 1:30PM','DR. PATEL: CALL'].forEach((t,i)=>{
+    wctx.fillStyle=`${C}.7)`;wctx.fillText(t,W*.61,H*.16+i*H*.04);
+  });
+}
+
+/* ══════════════════════
+   OCEAN CANVASES
+══════════════════════ */
+function drawOceanCard1(canvas,f){
+  fitCanvas(canvas);const W=canvas.width,H=canvas.height;const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+  const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#061828');g.addColorStop(1,'#030c18');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  // Coral structures
+  [[W*.25,H*.75],[W*.5,H*.72],[W*.75,H*.78]].forEach(([cx,cy],i)=>{
+    ctx.strokeStyle=`rgba(255,120,${60+i*30},0.35)`;ctx.lineWidth=3;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx,cy-H*.25);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx,cy-H*.12);ctx.lineTo(cx-20,cy-H*.22);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx,cy-H*.12);ctx.lineTo(cx+18,cy-H*.2);ctx.stroke();
+  });
+  // Reef HUD
+  const pulse=(Math.sin(f*.06)+1)/2;
+  ctx.fillStyle=`rgba(10,240,200,${pulse*.12})`;ctx.beginPath();ctx.arc(W*.5,H*.5,W*.38,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle=`${C}${.3+pulse*.2})`;ctx.lineWidth=1;ctx.setLineDash([4,6]);
+  ctx.beginPath();ctx.arc(W*.5,H*.5,W*.38,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+  ctx.font=`${H*.1}px ${T()}`;ctx.fillStyle=`${C}.7)`;ctx.textAlign='center';
+  ctx.fillText('REEF HEALTH: 82/100',W*.5,H*.18);
+  ctx.fillText('STATUS: HEALTHY',W*.5,H*.26);
+}
+function drawOceanCard2(canvas,f){
+  fitCanvas(canvas);const W=canvas.width,H=canvas.height;const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+  const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#0a1520');g.addColorStop(.4,'#0d2235');g.addColorStop(1,'#0a4060');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  // Grid mapping
+  ctx.strokeStyle='rgba(10,240,200,0.08)';ctx.lineWidth=.5;
+  for(let x=0;x<W;x+=W/8){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<H;y+=H/6){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  // Drone path
+  const dp=(f*.8)%(W*1.6)-W*.3;
+  ctx.fillStyle=`${C}.7)`;ctx.shadowColor=`${C}.5)`;ctx.shadowBlur=8;
+  ctx.beginPath();ctx.arc(dp,H*.3,5,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+  ctx.strokeStyle=`${C}.25)`;ctx.lineWidth=1;ctx.setLineDash([6,8]);
+  ctx.beginPath();ctx.moveTo(0,H*.3);ctx.lineTo(W,H*.3);ctx.stroke();ctx.setLineDash([]);
+  // Zone labels
+  [[W*.2,H*.55,'NATIVE FOREST'],[W*.65,H*.4,'COAST ZONE'],[W*.45,H*.75,'INVASIVE ⚠']].forEach(([x,y,t])=>{
+    ctx.fillStyle='rgba(2,8,18,0.7)';ctx.beginPath();ctx.roundRect(x-40,y-10,80,16,2);ctx.fill();
+    ctx.font=`${H*.09}px ${T()}`;ctx.fillStyle=t.includes('⚠')?'rgba(245,158,11,0.8)':`${C}.6)`;ctx.textAlign='center';
+    ctx.fillText(t,x,y+3);
+  });
+  ctx.font=`${H*.1}px ${T()}`;ctx.fillStyle=`${C}.55)`;ctx.textAlign='center';
+  ctx.fillText('DRONE MAPPING · ACTIVE',W*.5,H*.15);
+}
+function drawOceanCard3(canvas,f){
+  fitCanvas(canvas);const W=canvas.width,H=canvas.height;const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#040d0a';ctx.fillRect(0,0,W,H);
+  // Forest bg
+  ctx.fillStyle='rgba(10,40,15,0.5)';ctx.fillRect(0,H*.3,W,H);
+  // Bird detection boxes
+  [[W*.28,H*.38,60,55,'ʻAPAPANE',94],[W*.62,H*.45,50,45,'NEˉNeˉ',88],[W*.14,H*.55,45,40,'PUEO',72]].forEach(([bx,by,bw,bh,name,conf])=>{
+    const pulse=(Math.sin(f*.05+bx*.01)+1)/2;
+    ctx.strokeStyle=`${C}${.5+pulse*.2})`;ctx.lineWidth=1;ctx.strokeRect(bx,by,bw,bh);
+    ctx.fillStyle='rgba(2,8,18,0.72)';ctx.fillRect(bx,by-16,bw+20,14);
+    ctx.font=`${H*.06}px ${T()}`;ctx.fillStyle=`${C}.8)`;ctx.textAlign='left';
+    ctx.fillText(name+' '+conf+'%',bx+3,by-5);
+  });
+  ctx.font=`${H*.1}px ${T()}`;ctx.fillStyle=`${C}.6)`;ctx.textAlign='center';
+  ctx.fillText('SPECIES ID · HAWAII BIRDS',W*.5,H*.2);
+  ctx.font=`${H*.085}px ${T()}`;ctx.fillStyle=`${C}.4)`;
+  ctx.fillText('OFFLINE SSD DATABASE · ACTIVE',W*.5,H*.28);
+}
+
+/* ══════════════════════
+   MAIN ANIMATION LOOP
+══════════════════════ */
+function animate() {
+  globalFrame++;
+  drawHeroHUD(globalFrame);
+  drawDemoHUD(globalFrame);
+  drawWings(globalFrame);
+  drawOceanCard1(document.getElementById('ocean-canvas-1'),globalFrame);
+  drawOceanCard2(document.getElementById('ocean-canvas-2'),globalFrame);
+  drawOceanCard3(document.getElementById('ocean-canvas-3'),globalFrame);
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* ══════════════════════
+   SCROLL REVEAL
+══════════════════════ */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+<div id="elara-memory-panel">
+    ELARA MEMORY LINK ONLINE...
+</div>
+
+<script>
+async function loadELARAMemory() {
+    try {
+        const response = await fetch("elara_memory_output.txt");
+        const text = await response.text();
+const memoryPanel = document.getElementById("elara-memory-panel");
+
+if (text.includes("THREAT: High")) {
+    memoryPanel.style.border = "2px solid orange";
+    memoryPanel.style.boxShadow = "0 0 25px orange";
+}
+
+else if (text.includes("THREAT: Medium")) {
+    memoryPanel.style.border = "2px solid yellow";
+    memoryPanel.style.boxShadow = "0 0 20px yellow";
+}
+
+else {
+    memoryPanel.style.border = "2px solid cyan";
+    memoryPanel.style.boxShadow = "0 0 20px cyan";
+}
+
+
+        document.getElementById("elara-memory-panel").innerText =
+            "ELARA MEMORY\n\n" + text;
+
+    } catch (err) {
+        document.getElementById("elara-memory-panel").innerText =
+            "Memory link offline.";
+    }
+}
+
+loadELARAMemory();
+setInterval(loadELARAMemory, 3000);
+</script>
+
+
+<script>
+async function submitAssessment() {
+
+  const business =
+    document.getElementById("customerBusiness").value.trim();
+
+  const industry =
+    document.getElementById("customerIndustry").value.trim();
+
+  const goal =
+    document.getElementById("customerGoal").value.trim();
+
+  const contact =
+    document.getElementById("customerContact").value.trim();
+
+
+  if (!business || !industry || !contact) {
+
+    alert(
+      "Please enter business name, industry, and contact."
+    );
+
+    return;
+  }
+
+
+  const response = await fetch(
+    "http://127.0.0.1:5050/api/business-assessment",
+    {
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify(
+        {
+          business:business,
+          industry:industry,
+          goal:goal,
+          contact:contact
+        }
+      )
+    }
+  );
+
+
+  const data = await response.json();
+
+
+  if (data.status === "COMPLETE") {
+
+    alert(
+      "ELARA CustomerScout report generated for "
+      + business
+    );
+
+  } else {
+
+    alert(
+      "ELARA could not complete assessment."
+    );
+
+  }
+
+}
+</script>
+
+</body>
+</html>
