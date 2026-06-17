@@ -26,6 +26,27 @@ body {
   font-family:Arial, sans-serif;
 }
 
+.launch-banner {
+  background: rgba(0, 255, 238, 0.08);
+  border-bottom: 1px solid rgba(0, 255, 238, 0.35);
+  color: var(--text);
+  padding: 14px 28px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.launch-banner strong {
+  color: var(--accent);
+}
+
+.launch-banner a {
+  color: var(--accent);
+  margin-left: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+  
 header {
   padding:28px 7%;
   display:flex;
@@ -206,6 +227,13 @@ footer {
   </nav>
 </header>
 
+<div class="launch-banner">
+  <strong>🚀 Founder Launch Program:</strong>
+  Turn your skills, tools, or business idea into a growth plan.
+  First 25 Founding Assessments include personalized setup support.
+  <a href="#business">Launch Assessment: $99</a>
+</div>
+  
 <section class="hero">
   <div>
     <div class="eyebrow">ELARA INTELLIGENCE PLATFORM</div>
@@ -248,8 +276,8 @@ footer {
     <div class="card">
       <h3>Decision Support</h3>
       <p>
-        ELARA turns information into action through intellegent agents, reports, 
-        business assessments, grant discovery, workflows, and oporational support.
+        ELARA turns information into action through intelligent agents, reports, 
+        business assessments, grant discovery, workflows, and operational support.
       </p>
     </div>
   </div>
@@ -515,7 +543,7 @@ footer {
       <h2>$49/month</h2>
       <p>
         Ongoing support with estimates, customer messages, documents, workflows, 
-        growth planning, and AI-powered business assistance..
+        growth planning, and AI-powered business assistance.
       </p>
     </div>
 
@@ -587,7 +615,7 @@ function sendAssessment() {
     "Contact: " + contact;
 
   window.location.href =
-    "mailto:info@neuromusehq.com?subject=" +
+    "mailto:clients@neuromusehq.com?subject=" +
     encodeURIComponent(subject) +
     "&body=" + body;
 }
