@@ -117,6 +117,19 @@ h2 {
   gap:22px;
 }
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+  
 .card {
   background:rgba(6,25,35,.8);
   border:1px solid rgba(0,255,238,.28);
@@ -499,7 +512,7 @@ footer {
 
     <div class="card">
       <h3>ELARA Business Assistant</h3>
-      <h2>Monthly</h2>
+      <h2>$49/month</h2>
       <p>
         Continued support with estimates, documents, customer workflows,
         organization, and AI-powered business assistance.
@@ -508,7 +521,7 @@ footer {
 
     <div class="card">
       <h3>Innovation Partner</h3>
-      <h2>Custom</h2>
+      <h2>Starting at $499</h2>
       <p>
         Advanced ELARA systems for organizations, research teams,
         education, and specialized deployments.
@@ -537,13 +550,13 @@ footer {
   <div class="buttons">
 
     <a class="btn primary"
-       href="mailto:jesse@neuromusehq.com?subject=ELARA Demo Request">
+       href="mailto:info@neuromusehq.com?subject=ELARA Demo Request">
        REQUEST DEMO
     </a>
 
 
     <a class="btn"
-href="mailto:jesse@neuromusehq.com?subject=ELARA Business Assessment Request&body=Business Name:%0D%0A%0D%0AIndustry:%0D%0A%0D%0AMain Challenge or Goal:%0D%0A%0D%0AWhat would you like AI assistance with:%0D%0A%0D%0AWebsite (optional):%0D%0A%0D%0APhone (optional):">
+href="mailto:client@neuromusehq.com?subject=ELARA Business Assessment Request&body=Business Name:%0D%0A%0D%0AIndustry:%0D%0A%0D%0AMain Challenge or Goal:%0D%0A%0D%0AWhat would you like AI assistance with:%0D%0A%0D%0AWebsite (optional):%0D%0A%0D%0APhone (optional):">
 START BUSINESS ASSESSMENT</a>
 
   </div>
@@ -574,7 +587,7 @@ function sendAssessment() {
     "Contact: " + contact;
 
   window.location.href =
-    "mailto:jesse@neuromusehq.com?subject=" +
+    "mailto:info@neuromusehq.com?subject=" +
     encodeURIComponent(subject) +
     "&body=" + body;
 }
