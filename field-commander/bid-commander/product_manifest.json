@@ -1,0 +1,30 @@
+{
+  "core_number": 302,
+  "name": "ELARA Bid Intelligence",
+  "product_name": "ELARA Bid Commander",
+  "type": "Construction Bid Preparation and Coaching Engine",
+  "status": "ACTIVE DEVELOPMENT",
+  "version": "1.0",
+  "owner": "NeuroMuse Technologies",
+  "primary_user": "Ernest Guerrero",
+  "used_by": [
+    "ELARA Field Commander"
+  ],
+  "depends_on": [
+    "301_ELARA_TIMELINE_ENGINE",
+    "300_ELARA_FIELD_OPERATIONS_SUITE",
+    "ELARA Academy"
+  ],
+  "capabilities": [
+    "Create bid workspaces",
+    "Guide users through bid preparation",
+    "Track required documents",
+    "Capture scope and exclusions",
+    "Build pricing worksheets",
+    "Calculate markup and proposed price",
+    "Score submission readiness",
+    "Generate bid summaries",
+    "Teach bidding concepts on demand"
+  ],
+  "last_updated": "2026-07-10"
+}

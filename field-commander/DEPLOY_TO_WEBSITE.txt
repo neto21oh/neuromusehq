@@ -1,0 +1,31 @@
+DEPLOY ELARA TO NEUROMUSEHQ.COM
+================================
+
+Upload the CONTENTS of this folder to a public HTTPS directory such as:
+
+/public_html/field-commander/
+
+The live URL should become:
+
+https://neuromusehq.com/field-commander/
+
+Keep the folder structure intact:
+- index.html
+- manifest.webmanifest
+- service-worker.js
+- icons/
+- academy/
+- bid-commander/
+- all JavaScript and CSS files
+
+After uploading:
+
+1. Open the live URL in Chrome or Edge on a computer.
+2. Confirm the page loads.
+3. Open Developer Tools > Application.
+4. Confirm the manifest and service worker are detected.
+5. Turn off the network and reload to test the cached app.
+6. Open the same HTTPS URL on Ernest's phone and add it to the home screen.
+
+Do not open service-worker.js directly.
+Do not rename manifest.webmanifest without also updating index.html.

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELARA Bid Commander</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">✦</div>
+      <h1>ELARA Bid Commander</h1>
+      <p>Tell ELARA about the job. She will organize the bid.</p>
+
+      <button class="nav active" data-page="dashboard">🏠 Bid Dashboard</button>
+      <button class="nav" data-page="newbid">➕ Start New Bid</button>
+      <button class="nav" data-page="checklist">✅ Bid Checklist</button>
+      <button class="nav" data-page="scope">📋 Scope Review</button>
+      <button class="nav" data-page="pricing">💵 Pricing</button>
+      <button class="nav" data-page="submission">📤 Submission</button>
+      <button class="nav" data-page="academy">✦ Bid Academy</button>
+
+      <div class="sidebar-note">
+        <strong>Work first.</strong>
+        <span>Teaching is optional and never blocks bid preparation.</span>
+      </div>
+    </aside>
+
+    <main>
+      <div style="margin-bottom:14px">
+        <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;color:#54d8ff;text-decoration:none;font-weight:700">← Back to Field Commander</a>
+      </div>
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">CORE 302 · CONSTRUCTION BID INTELLIGENCE</span>
+          <h2 id="pageTitle">Bid Dashboard</h2>
+        </div>
+        <button class="primary" onclick="showPage('newbid')">Start a Bid</button>
+      </header>
+
+      <section id="content"></section>
+    </main>
+  </div>
+
+  <script src="bid_engine.js"></script>
+  <script src="bid_scoring.js"></script>
+  <script src="bid_export.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

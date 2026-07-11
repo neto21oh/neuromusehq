@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELARA Academy</title>
+  <link rel="stylesheet" href="academy.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-mark">✦</div>
+      <div>
+        <h1>ELARA Academy</h1>
+        <p>Knowledge that works beside you.</p>
+      </div>
+
+      <label class="search-label" for="searchInput">Search Academy</label>
+      <input id="searchInput" class="search" type="search" placeholder="Try “change order”">
+
+      <div id="categoryFilters" class="filters"></div>
+
+      <div class="side-note">
+        <strong>For Ernest</strong>
+        <span>Construction, administration, safety, and legal basics in plain language.</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">SHARED ELARA KNOWLEDGE SYSTEM</span>
+          <h2 id="pageTitle">Academy Library</h2>
+        </div>
+        <button class="secondary-btn" id="randomLessonBtn">✦ Teach Me Something</button>
+      </header>
+
+      <section id="libraryView">
+        <div class="welcome-card">
+          <div>
+            <span class="pill">Academy V1</span>
+            <h3>Learn while the work is happening.</h3>
+            <p>Open a card for a plain explanation, real example, common mistake, and professional tip.</p>
+          </div>
+          <div class="welcome-stat">
+            <strong id="cardCount">14</strong>
+            <span>knowledge cards</span>
+          </div>
+        </div>
+        <div id="cardGrid" class="card-grid"></div>
+      </section>
+
+      <section id="lessonView" class="lesson-view hidden">
+        <button id="backBtn" class="back-btn">← Back to Academy</button>
+
+        <article class="lesson-card">
+          <div class="lesson-header">
+            <div>
+              <span id="lessonCategory" class="pill"></span>
+              <h2 id="lessonTerm"></h2>
+              <p id="lessonShort" class="lesson-short"></p>
+            </div>
+            <button id="readBtn" class="voice-btn">🔊 Read Aloud</button>
+          </div>
+
+          <div class="lesson-sections">
+            <section>
+              <span class="section-icon">01</span>
+              <div><h3>What it is</h3><p id="lessonWhat"></p></div>
+            </section>
+            <section>
+              <span class="section-icon">02</span>
+              <div><h3>Why it matters</h3><p id="lessonWhy"></p></div>
+            </section>
+            <section>
+              <span class="section-icon">03</span>
+              <div><h3>Real example</h3><p id="lessonExample"></p></div>
+            </section>
+            <section class="warning-section">
+              <span class="section-icon">!</span>
+              <div><h3>Common mistake</h3><p id="lessonMistake"></p></div>
+            </section>
+            <section class="tip-section">
+              <span class="section-icon">✦</span>
+              <div><h3>ELARA professional tip</h3><p id="lessonTip"></p></div>
+            </section>
+          </div>
+
+          <div class="related-box">
+            <h3>Related topics</h3>
+            <div id="relatedTerms" class="related-terms"></div>
+          </div>
+
+          <div id="legalNote" class="legal-note hidden"></div>
+
+          <div class="lesson-actions">
+            <button id="previousBtn" class="secondary-btn">← Previous</button>
+            <button id="markLearnedBtn" class="primary-btn">✓ Mark as Learned</button>
+            <button id="nextBtn" class="secondary-btn">Next →</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="academy_data.js"></script>
+  <script src="academy.js"></script>
+</body>
+</html>

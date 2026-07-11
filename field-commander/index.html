@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Voice-first construction field operations and bid preparation with ELARA.">
+  <meta name="application-name" content="ELARA Field Commander">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ELARA Field">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <title>ELARA Field Commander | Ernest</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">ELARA™</div>
+      <div class="subtitle">Field Commander · Ernest</div>
+      <button onclick="loadPage('dashboard')">🏠 Today</button>
+      <button onclick="loadPage('projects')">📁 Project</button>
+      <button onclick="loadPage('daily')">📝 Daily Report</button>
+      <button onclick="loadPage('email')">✉️ Email Assistant</button>
+      <button onclick="loadPage('contractors')">👷 Contractors</button>
+      <button onclick="loadPage('measurements')">📐 Measurements</button>
+      <button onclick="loadPage('damage')">📸 Damage</button>
+      <button onclick="loadPage('changeorders')">💵 Change Orders</button>
+      <button onclick="loadPage('timeline')">🕒 Project Timeline</button>
+      <button onclick="openBidCommander()">📋 Bid Commander</button>
+      <button onclick="loadPage('reports')">📊 Excel / Reports</button>
+      <button onclick="loadPage('backup')">💾 Save / Backup</button>
+      <button onclick="openAcademy()">✦ ELARA Academy</button>
+      <button onclick="loadPage('suggestions')">💡 Ideas for ELARA</button>
+      <button id="installAppButton" onclick="installELARA()">📱 Install ELARA</button>
+      <button onclick="loadPage('help')">❓ How to Use</button>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><h1>ELARA™ Field Commander</h1><p>Voice-first project management for Ernest Guerrero</p></div>
+        <div id="connectionStatus" class="status-pill">● LOCAL MODE</div>
+      </header>
+      <div id="updateBanner" class="update-banner hidden">
+        <span>A new ELARA update is ready.</span>
+        <button onclick="applyELARAUpdate()">Update Now</button>
+      </div>
+      <section id="content"></section>
+    </main>
+  </div>
+  <script src="timeline_engine.js"></script>
+  <script src="timeline_search.js"></script>
+  <script src="timeline_summary.js"></script>
+  <script src="timeline_export.js"></script>
+  <script src="app.js"></script>
+  <script src="install.js"></script>
+
+  <div id="welcomeWizard" class="modal-backdrop hidden">
+    <div class="welcome-modal">
+      <div class="welcome-spark">✦</div>
+      <span class="eyebrow">FOUNDING FIELD PARTNER EDITION</span>
+      <h2>Welcome, Ernest.</h2>
+      <p>ELARA helps you document projects, prepare reports, organize bids, and keep the work moving.</p>
+      <div class="welcome-steps">
+        <div><b>1</b><span>Press <strong>Start Talking</strong> and tell ELARA what happened.</span></div>
+        <div><b>2</b><span>Review what ELARA understood, then save everything.</span></div>
+        <div><b>3</b><span>Use <strong>Bid Commander</strong> when the company asks you to price a job.</span></div>
+        <div><b>4</b><span>The ✦ Academy is optional. Work always comes first.</span></div>
+      </div>
+      <button class="action-btn success-btn" onclick="finishWelcome()">Start Working</button>
+    </div>
+  </div>
+
+  <div id="installHelp" class="modal-backdrop hidden">
+    <div class="welcome-modal">
+      <div class="welcome-spark">📱</div>
+      <h2>Install ELARA</h2>
+      <div id="installPlatformText">
+        <p><b>iPhone/iPad:</b> Open this page in Safari, tap Share, then tap <b>Add to Home Screen</b>.</p>
+        <p><b>Android:</b> Open this page in Chrome, open the browser menu, then tap <b>Install app</b> or <b>Add to Home screen</b>.</p>
+      </div>
+      <button class="action-btn success-btn" onclick="closeInstallHelp()">Got It</button>
+    </div>
+  </div>
+</body>
+</html>
