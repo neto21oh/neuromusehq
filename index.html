@@ -212,6 +212,34 @@ footer {
     display:none;
   }
 }
+
+/* ELARA public demo layer */
+.elara-demo{margin:0 7% 90px;padding:42px;border:1px solid rgba(0,255,238,.45);background:linear-gradient(135deg,rgba(0,255,238,.08),rgba(56,189,248,.03));position:relative;overflow:hidden}
+.elara-demo:before{content:"ELARA";position:absolute;right:-10px;top:-30px;font-size:150px;font-weight:900;color:rgba(0,255,238,.035)}
+.elara-demo h2{max-width:760px}.elara-demo p{color:var(--muted);max-width:760px;line-height:1.7}
+.elara-prompt{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.elara-chip{border:1px solid rgba(0,255,238,.35);background:#04131b;color:var(--text);padding:11px 14px;cursor:pointer}
+.pilot-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.pilot{padding:20px;border:1px solid rgba(0,255,238,.22);background:rgba(2,11,18,.65)}
+.pilot strong{display:block;color:var(--accent);margin-bottom:8px}.pilot{transition:.2s transform,.2s border-color}.pilot:hover{transform:translateY(-3px);border-color:rgba(0,255,238,.65)}.pilot span{color:var(--muted);font-size:14px;line-height:1.5}
+.powered{font-size:11px;letter-spacing:2px;color:var(--muted);margin-top:26px}
+@media(max-width:800px){.pilot-strip{grid-template-columns:1fr}.elara-demo{margin:0 4% 60px;padding:26px}}
+
+/* Flagship visual upgrade */
+body{background:
+radial-gradient(circle at 82% 12%,rgba(0,255,238,.09),transparent 24rem),
+radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--bg)}
+.hero{position:relative;overflow:hidden;min-height:72vh;display:grid;align-items:center}
+.hero:before{content:"";position:absolute;inset:8% 5% auto auto;width:min(42vw,560px);aspect-ratio:1;border:1px solid rgba(0,255,238,.18);border-radius:50%;box-shadow:0 0 80px rgba(0,255,238,.08),inset 0 0 80px rgba(0,255,238,.04);background:repeating-radial-gradient(circle,transparent 0 42px,rgba(0,255,238,.07) 43px 44px)}
+.hero:after{content:"ELARA // PERCEPTION • KNOWLEDGE • DECISION";position:absolute;right:7%;bottom:11%;font-size:10px;letter-spacing:.22em;color:rgba(0,255,238,.55);padding:10px 14px;border-left:2px solid var(--accent);background:rgba(0,12,18,.72)}
+.hero>div{position:relative;z-index:1;max-width:850px}
+.hero h1{font-size:clamp(52px,8vw,108px);line-height:.9;letter-spacing:-.045em;max-width:900px}
+.hero p{max-width:720px;font-size:clamp(16px,1.6vw,20px)}
+.card{position:relative;overflow:hidden;transition:transform .22s ease,border-color .22s ease,background .22s ease}
+.card:after{content:"";position:absolute;width:70px;height:1px;background:var(--accent);right:18px;top:18px;opacity:.35}
+.card:hover{transform:translateY(-5px);border-color:rgba(0,255,238,.5);background:rgba(0,255,238,.035)}
+.flow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;background:linear-gradient(180deg,rgba(0,255,238,.06),rgba(0,0,0,.1));border:1px solid rgba(0,255,238,.2);padding:34px}
+@media(max-width:800px){.hero:before{width:90vw;right:-45%;opacity:.55}.hero:after{display:none}.hero{min-height:65vh}}
 </style>
 </head>
 
@@ -221,6 +249,7 @@ footer {
   <div class="logo">NEUROMUSE TECHNOLOGIES</div>
   <nav>
     <a href="#platform">PLATFORM</a>
+    <a href="#pilots">REAL WORLD</a>
     <a href="#applications">APPLICATIONS</a>
     <a href="#business">BUSINESS AI</a>
     <a href="#contact">CONTACT</a>
@@ -251,7 +280,24 @@ footer {
   </div>
 </section>
 
- <section id="pillars">
+ <section class="elara-demo" id="demo">
+  <div class="eyebrow">MEET ELARA</div>
+  <h2>Would you like to know more?</h2>
+  <p>ELARA connects specialized agents, real-world information and human approval into one working intelligence layer. Explore how the same core adapts to different missions.</p>
+  <div class="elara-prompt">
+    <button class="elara-chip" onclick="document.getElementById('applications').scrollIntoView()">Show me what ELARA can do</button>
+    <button class="elara-chip" onclick="document.getElementById('business').scrollIntoView()">Help my business</button>
+    <button class="elara-chip" onclick="document.getElementById('pilots').scrollIntoView()">Show me ELARA in the real world</button>
+  </div>
+  <div class="pilot-strip" id="pilots">
+    <a class="pilot" href="https://neto21oh.github.io/texas-patriot-land-services/" target="_blank" rel="noopener" style="text-decoration:none"><strong>FIELD OPERATIONS ↗</strong><span>Texas Patriot Land Services — an ELARA Pilot Partner testing field workflows and business operations.</span></a>
+    <div class="pilot"><strong>SKILLED TRADES</strong><span>Unique Floors by the Bay — an ELARA Pilot Partner for estimating, crews, customer workflow and future AR assistance.</span></div>
+    <div class="pilot"><strong>TOURISM & DISCOVERY</strong><span>Oʻahu Companion — events, culture, translation and contextual island assistance powered by ELARA.</span></div>
+  </div>
+  <div class="powered">ELARA™ • HUMAN-GUIDED INTELLIGENCE BY NEUROMUSE TECHNOLOGIES</div>
+</section>
+
+<section id="pillars">
   <div class="eyebrow">THE ELARA PLATFORM</div>
   <h2>Built around three intelligence layers.</h2>
 
@@ -334,7 +380,7 @@ footer {
       ↓<br>
       ELARA Core Intelligence<br>
       ↓<br>
-      MuseOS Decision Layer<br>
+      ELARA Decision & Governance Layer<br>
       ↓<br>
       Specialized Agents and Modules<br>
       ↓<br>
