@@ -443,7 +443,7 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
     </div>
 
     <div class="card">
-      <h3>Enviromental & Field Intelligence</h3>
+      <h3>Environmental & Field Intelligence</h3>
       <p>
         NeuroDive, NeuroSurvivor, and field intelligence tools help identify risks,
         environmental patterns, safety needs, and mission context.
@@ -629,9 +629,7 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
 
 
 <a class="btn"
-href="mailto:clients@neuromusehq.com?subject=ELARA Business Assessment Request&body=Business Name:%0D%0A%0D%0ABusiness Type:%0D%0A%0D%0ALocation:%0D%0A%0D%0ACurrent Stage:%0D%0AIdea / Starting / Operating / Growing%0D%0A%0D%0AMilitary Connection (if applicable):%0D%0AActive Duty / Veteran / Military Spouse / None%0D%0A%0D%0AWhat do you need help with:%0D%0APricing and Estimates%0D%0AFinding Customers%0D%0AFunding Opportunities%0D%0ABusiness Setup%0D%0AMarketing%0D%0AAI Automation%0D%0A%0D%0AMain Challenge:%0D%0A%0D%0AWebsite or Social Media:%0D%0A%0D%0APhone/ Best Contact:"START BUSINESS ASSESSMENT</a>
-START ASSESSMENT
-</a>
+href="mailto:clients@neuromusehq.com?subject=ELARA Business Assessment Request&body=Business Name:%0D%0A%0D%0ABusiness Type:%0D%0A%0D%0ALocation:%0D%0A%0D%0ACurrent Stage:%0D%0AIdea / Starting / Operating / Growing%0D%0A%0D%0AMilitary Connection (if applicable):%0D%0AActive Duty / Veteran / Military Spouse / None%0D%0A%0D%0AWhat do you need help with:%0D%0APricing and Estimates%0D%0AFinding Customers%0D%0AFunding Opportunities%0D%0ABusiness Setup%0D%0AMarketing%0D%0AAI Automation%0D%0A%0D%0AMain Challenge:%0D%0A%0D%0AWebsite or Social Media:%0D%0A%0D%0APhone/ Best Contact:">START BUSINESS ASSESSMENT</a>
   </div>
 
 </section>
@@ -654,15 +652,15 @@ function sendAssessment() {
 
   const subject = "ELARA Business Assessment Request";
   const body =
-    "Business: " + business + "%0D%0A" +
-    "Industry: " + industry + "%0D%0A" +
-    "Goal: " + goal + "%0D%0A" +
+    "Business: " + business + "\n" +
+    "Industry: " + industry + "\n" +
+    "Goal: " + goal + "\n" +
     "Contact: " + contact;
 
   window.location.href =
     "mailto:clients@neuromusehq.com?subject=" +
     encodeURIComponent(subject) +
-    "&body=" + body;
+    "&body=" + encodeURIComponent(body);
 }
 </script>
 
