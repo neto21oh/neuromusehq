@@ -494,10 +494,10 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
 
   <div class="card">
     <h3>Start an ELARA Business Assessment</h3>
-    <input id="bizName" placeholder="Business name">
-    <input id="bizIndustry" placeholder="Industry / business type">
-    <textarea id="bizGoal" placeholder="Main goal or challenge"></textarea>
-    <input id="bizContact" placeholder="Email or phone">
+    <label for="bizName">Business name</label>\n    <input id="bizName" placeholder="Business name" autocomplete="organization">
+    <label for="bizIndustry">Industry / business type</label>\n    <input id="bizIndustry" placeholder="Industry / business type">
+    <label for="bizGoal">Main goal or challenge</label>\n    <textarea id="bizGoal" placeholder="Main goal or challenge"></textarea>
+    <label for="bizContact">Email or phone</label>\n    <input id="bizContact" placeholder="Email or phone" autocomplete="email">
 
     <button class="btn primary" type="button" onclick="sendAssessment()">REQUEST ASSESSMENT</button>
   </div>
