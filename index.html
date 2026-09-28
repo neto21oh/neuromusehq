@@ -221,7 +221,7 @@ footer {
 .elara-chip{border:1px solid rgba(0,255,238,.35);background:#04131b;color:var(--text);padding:11px 14px;cursor:pointer}
 .pilot-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
 .pilot{padding:20px;border:1px solid rgba(0,255,238,.22);background:rgba(2,11,18,.65)}
-.pilot strong{display:block;color:var(--accent);margin-bottom:8px}.pilot span{color:var(--muted);font-size:14px;line-height:1.5}
+.pilot strong{display:block;color:var(--accent);margin-bottom:8px}.pilot{transition:.2s transform,.2s border-color}.pilot:hover{transform:translateY(-3px);border-color:rgba(0,255,238,.65)}.pilot span{color:var(--muted);font-size:14px;line-height:1.5}
 .powered{font-size:11px;letter-spacing:2px;color:var(--muted);margin-top:26px}
 @media(max-width:800px){.pilot-strip{grid-template-columns:1fr}.elara-demo{margin:0 4% 60px;padding:26px}}
 </style>
@@ -233,6 +233,7 @@ footer {
   <div class="logo">NEUROMUSE TECHNOLOGIES</div>
   <nav>
     <a href="#platform">PLATFORM</a>
+    <a href="#pilots">REAL WORLD</a>
     <a href="#applications">APPLICATIONS</a>
     <a href="#business">BUSINESS AI</a>
     <a href="#contact">CONTACT</a>
@@ -273,7 +274,7 @@ footer {
     <button class="elara-chip" onclick="document.getElementById('pilots').scrollIntoView()">Show me ELARA in the real world</button>
   </div>
   <div class="pilot-strip" id="pilots">
-    <div class="pilot"><strong>FIELD OPERATIONS</strong><span>Texas Patriot Land Services — an ELARA Pilot Partner testing field workflows and business operations.</span></div>
+    <a class="pilot" href="https://neto21oh.github.io/texas-patriot-land-services/" target="_blank" rel="noopener" style="text-decoration:none"><strong>FIELD OPERATIONS ↗</strong><span>Texas Patriot Land Services — an ELARA Pilot Partner testing field workflows and business operations.</span></a>
     <div class="pilot"><strong>SKILLED TRADES</strong><span>Unique Floors by the Bay — an ELARA Pilot Partner for estimating, crews, customer workflow and future AR assistance.</span></div>
     <div class="pilot"><strong>TOURISM & DISCOVERY</strong><span>Oʻahu Companion — events, culture, translation and contextual island assistance powered by ELARA.</span></div>
   </div>
