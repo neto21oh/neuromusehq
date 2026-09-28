@@ -224,6 +224,22 @@ footer {
 .pilot strong{display:block;color:var(--accent);margin-bottom:8px}.pilot{transition:.2s transform,.2s border-color}.pilot:hover{transform:translateY(-3px);border-color:rgba(0,255,238,.65)}.pilot span{color:var(--muted);font-size:14px;line-height:1.5}
 .powered{font-size:11px;letter-spacing:2px;color:var(--muted);margin-top:26px}
 @media(max-width:800px){.pilot-strip{grid-template-columns:1fr}.elara-demo{margin:0 4% 60px;padding:26px}}
+
+/* Flagship visual upgrade */
+body{background:
+radial-gradient(circle at 82% 12%,rgba(0,255,238,.09),transparent 24rem),
+radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--bg)}
+.hero{position:relative;overflow:hidden;min-height:72vh;display:grid;align-items:center}
+.hero:before{content:"";position:absolute;inset:8% 5% auto auto;width:min(42vw,560px);aspect-ratio:1;border:1px solid rgba(0,255,238,.18);border-radius:50%;box-shadow:0 0 80px rgba(0,255,238,.08),inset 0 0 80px rgba(0,255,238,.04);background:repeating-radial-gradient(circle,transparent 0 42px,rgba(0,255,238,.07) 43px 44px)}
+.hero:after{content:"ELARA // PERCEPTION • KNOWLEDGE • DECISION";position:absolute;right:7%;bottom:11%;font-size:10px;letter-spacing:.22em;color:rgba(0,255,238,.55);padding:10px 14px;border-left:2px solid var(--accent);background:rgba(0,12,18,.72)}
+.hero>div{position:relative;z-index:1;max-width:850px}
+.hero h1{font-size:clamp(52px,8vw,108px);line-height:.9;letter-spacing:-.045em;max-width:900px}
+.hero p{max-width:720px;font-size:clamp(16px,1.6vw,20px)}
+.card{position:relative;overflow:hidden;transition:transform .22s ease,border-color .22s ease,background .22s ease}
+.card:after{content:"";position:absolute;width:70px;height:1px;background:var(--accent);right:18px;top:18px;opacity:.35}
+.card:hover{transform:translateY(-5px);border-color:rgba(0,255,238,.5);background:rgba(0,255,238,.035)}
+.flow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;background:linear-gradient(180deg,rgba(0,255,238,.06),rgba(0,0,0,.1));border:1px solid rgba(0,255,238,.2);padding:34px}
+@media(max-width:800px){.hero:before{width:90vw;right:-45%;opacity:.55}.hero:after{display:none}.hero{min-height:65vh}}
 </style>
 </head>
 
