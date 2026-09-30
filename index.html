@@ -246,6 +246,7 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
 @media(max-width:800px){.hero:before{width:90vw;right:-45%;opacity:.55}.hero:after{display:none}.hero{min-height:65vh}}
 
     .human-manifesto{margin:34px auto 0;max-width:980px;padding:clamp(28px,5vw,54px);border:1px solid rgba(89,225,255,.24);background:linear-gradient(135deg,rgba(8,24,34,.92),rgba(8,16,26,.72));position:relative;overflow:hidden}.human-manifesto:before{content:"HUMAN // IN COMMAND";position:absolute;right:18px;top:14px;font:700 10px/1 monospace;letter-spacing:.18em;color:rgba(89,225,255,.48)}.manifesto-quote{font-size:clamp(22px,3.2vw,38px);line-height:1.28;font-weight:700;letter-spacing:-.025em;margin:10px 0 18px}.manifesto-quote em{font-style:normal;color:var(--accent)}.manifesto-rule{height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin:28px 0}.my-elara{font-size:clamp(17px,2vw,23px);line-height:1.6;color:#d8e7ef;max-width:850px}.my-elara strong{color:#fff}.my-elara-signoff{margin-top:24px;font-family:monospace;letter-spacing:.16em;color:var(--accent);font-size:12px}.manifesto-kicker{font-family:monospace;letter-spacing:.18em;font-size:11px;color:var(--accent)}
+.demo-output{min-height:44px;margin-top:18px!important;color:var(--accent)!important;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}.demo-output.active{padding:14px;border-left:2px solid var(--accent);background:rgba(0,255,238,.05)}
 </style>
 </head>
 
@@ -256,6 +257,8 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
   <nav>
     <a href="#platform">PLATFORM</a>
     <a href="#pilots">REAL WORLD</a>
+    <a href="#demos">DEMOS</a>
+    <a href="#san-antonio-pilot">SAN ANTONIO PILOT</a>
     <a href="#applications">APPLICATIONS</a>
     <a href="#business">BUSINESS AI</a>
     <a href="#contact">CONTACT</a>
@@ -263,10 +266,9 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
 </header>
 
 <div class="launch-banner">
-  <strong>🚀 Founder Launch Program:</strong>
-  Turn your skills, tools, or business idea into a growth plan.
-  First 25 Founder Assessments include personalized setup support.
-  <a href="#business">Launch Assessment: $99</a>
+  <strong>☕ SAN ANTONIO: 5 LOCAL BUSINESSES WANTED</strong>
+  Apply for the 4-week ELARA Small Business Pilot. Applications close Friday, Oct. 2 at 11:59 PM CT.
+  <a href="#san-antonio-pilot">APPLY NOW</a>
 </div>
   
 <section class="hero">
@@ -280,7 +282,7 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
     </p>
 
     <div class="buttons">
-      <a class="btn primary" href="#contact">REQUEST DEMO</a>
+      <a class="btn primary" href="#demos">SEE ELARA IN ACTION</a>
 <a class="btn" href="mailto:jesse@neuromusehq.com?subject=ELARA Founder Assessment Request&body=Hello NeuroMuse,%0D%0A%0D%0AI would like to request an ELARA Business Assessment.%0D%0A%0D%0ABusiness Name:%0D%0AIndustry / Business Type:%0D%0ALocation:%0D%0A%0D%0AAre you:%0D%0A[ ] Veteran%0D%0A[ ] Military Family%0D%0A[ ] Small Business%0D%0A[ ] Startup%0D%0A[ ] Nonprofit%0D%0A%0D%0ACurrent challenge:%0D%0A(customers, funding, marketing, growth, operations, contracts, permits, inventory, etc.)%0D%0A%0D%0AWhat would you like ELARA to help improve?%0D%0A%0D%0AThank you.">START BUSINESS ASSESSMENT</a>      <a class="btn" href="#platform">EXPLORE PLATFORM</a>
     </div>
   </div>
@@ -313,6 +315,45 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
     <div class="manifesto-rule"></div>
     <div class="my-elara"><strong>“This is my ELARA.</strong> She knows what I'm working on, helps me see what I'm missing, brings in the right capability when I need it, remembers the important things, and doesn't take consequential action without me.”</div>
     <div class="my-elara-signoff">THIS IS MY ELARA. // HUMAN-GUIDED INTELLIGENCE</div>
+  </div>
+</section>
+
+<section id="demos">
+  <div class="eyebrow">SEE ELARA IN ACTION</div>
+  <h2>Three environments. One human-guided intelligence system.</h2>
+  <p style="color:var(--muted);max-width:900px;line-height:1.7">These guided scenarios show how ELARA can support work without taking consequential decisions away from the person using it.</p>
+  <div class="grid">
+    <div class="card"><h3>FIELD WORK // FIELD COMMANDER</h3><p><strong>Scenario:</strong> A crew finishes a site visit with voice notes, measurements and photos.</p><p>ELARA organizes the project record, surfaces missing details, helps prepare estimates and change-order information, and turns the day's activity into a usable report for human review.</p><button class="elara-chip" onclick="runDemo(this,'Voice note captured → photos + measurements organized → missing project detail flagged → daily report drafted → AWAITING HUMAN APPROVAL')">RUN GUIDED DEMO</button><p class="demo-output" aria-live="polite"></p></div>
+    <div class="card"><h3>MEMORY ASSISTANCE</h3><p><strong>Scenario:</strong> “Where did I put my keys?”</p><p>ELARA can use available context to surface the last known observation, communicate confidence, and help with reminders. If it does not know, it says so rather than inventing an answer.</p><button class="elara-chip" onclick="runDemo(this,'Last observation available → context checked → confidence shown → reminder offered → HUMAN DECIDES NEXT STEP')">RUN GUIDED DEMO</button><p class="demo-output" aria-live="polite"></p></div>
+    <div class="card"><h3>SMALL BUSINESS</h3><p><strong>Scenario:</strong> A business owner says customer follow-up and paperwork are eating up the week.</p><p>ELARA organizes the business context, maps the workflow, identifies practical improvements and prepares drafts or next steps for the owner to approve.</p><button class="elara-chip" onclick="runDemo(this,'Problem captured → workflow mapped → opportunities identified → draft action prepared → AWAITING OWNER APPROVAL')">RUN GUIDED DEMO</button><p class="demo-output" aria-live="polite"></p></div>
+  </div>
+  <p style="color:var(--muted);margin-top:20px;font-size:13px">Guided demonstrations illustrate ELARA workflows. Assistive scenarios are not medical diagnosis or treatment.</p>
+</section>
+
+<section id="pilot-voices">
+  <div class="eyebrow">ELARA PILOT VOICES</div>
+  <h2>Built with people who do the work.</h2>
+  <div class="grid">
+    <div class="card"><h3>BJ // UNIQUE FLOORS BY THE BAY</h3><div class="manifesto-quote" style="font-size:28px">“This is going to change my life.”</div><p>ELARA Pilot Partner · Skilled Trades. BJ describes himself as not a tech person and is helping NeuroMuse test the system against real flooring and business workflows.</p></div>
+    <div class="card"><h3>ERNEST // TEXAS PATRIOT LAND SERVICES</h3><div class="manifesto-quote" style="font-size:28px">“This is going to change my life.”</div><p>ELARA Pilot Partner · Field Operations. Ernest also describes himself as not a tech person and is testing ELARA in real field and business workflows.</p></div>
+  </div>
+  <div class="platform" style="margin-top:24px"><strong style="color:var(--accent)">PILOT IN PROGRESS · FIELD FEEDBACK COMING</strong><p style="color:var(--muted);line-height:1.6">Both pilot partners agreed to keep NeuroMuse updated as they use ELARA in real working environments. Their feedback will help document what works, what needs improvement and where ELARA can reduce the technology barrier.</p></div>
+</section>
+
+<section id="san-antonio-pilot">
+  <div class="eyebrow">SAN ANTONIO // PILOT COHORT 01</div>
+  <h2>5 businesses. 4 weeks. Real problems. Real feedback.</h2>
+  <div class="platform">
+    <p style="font-size:20px;line-height:1.6">NeuroMuse is selecting <strong>five San Antonio-area businesses</strong> from different industries and operating environments for a hands-on ELARA Small Business Pilot.</p>
+    <div class="grid" style="margin-top:24px">
+      <div class="card"><h3>THE COMMITMENT</h3><p>One check-in per week for four weeks, plus candid feedback about what works, what doesn't and what needs to improve.</p></div>
+      <div class="card"><h3>THE COST</h3><p><strong>Two coffees. ☕☕</strong><br>One for Jesse. One for Gloria. No purchase required at the end.</p></div>
+      <div class="card"><h3>DEADLINE</h3><p><strong>Friday, October 2<br>11:59 PM CT</strong></p><p>Applications are reviewed after the deadline; this is not first-come, first-served.</p></div>
+    </div>
+    <h3 style="margin-top:30px;color:var(--accent)">HOW TO APPLY</h3>
+    <p style="color:var(--muted);line-height:1.7">Email your business name, what your business does, your biggest day-to-day business headache, what you'd like ELARA to help improve, and the best way to contact you.</p>
+    <div class="buttons"><a class="btn primary" href="mailto:clients@neuromusehq.com?subject=San Antonio ELARA Pilot Application&body=Business Name:%0D%0A%0D%0AWhat my business does:%0D%0A%0D%0ABiggest day-to-day business headache:%0D%0A%0D%0AWhat I would like ELARA to help improve:%0D%0A%0D%0ABest way to contact me:%0D%0A">APPLY TO THE SAN ANTONIO PILOT</a></div>
+    <p class="powered">CLIENTS@NEUROMUSEHQ.COM · ELARA™ HUMAN-GUIDED INTELLIGENCE</p>
   </div>
 </section>
 
@@ -662,6 +703,12 @@ href="mailto:clients@neuromusehq.com?subject=ELARA Business Assessment Request&b
 </footer>
 
 <script>
+function runDemo(button, message) {
+  const output = button.parentElement.querySelector(".demo-output");
+  output.textContent = message;
+  output.classList.add("active");
+}
+
 function sendAssessment() {
   const business = document.getElementById("bizName").value.trim();
   const industry = document.getElementById("bizIndustry").value.trim();
