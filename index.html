@@ -245,7 +245,7 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
 .flow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;background:linear-gradient(180deg,rgba(0,255,238,.06),rgba(0,0,0,.1));border:1px solid rgba(0,255,238,.2);padding:34px}
 @media(max-width:800px){.hero:before{width:90vw;right:-45%;opacity:.55}.hero:after{display:none}.hero{min-height:65vh}}
 
-    .human-manifesto{margin:34px auto 0;max-width:980px;padding:clamp(28px,5vw,54px);border:1px solid rgba(89,225,255,.24);background:linear-gradient(135deg,rgba(8,24,34,.92),rgba(8,16,26,.72));position:relative;overflow:hidden}.human-manifesto:before{content:"HUMAN // IN COMMAND";position:absolute;right:18px;top:14px;font:700 10px/1 monospace;letter-spacing:.18em;color:rgba(89,225,255,.48)}.manifesto-quote{font-size:clamp(22px,3.2vw,38px);line-height:1.28;font-weight:700;letter-spacing:-.025em;margin:10px 0 18px}.manifesto-quote em{font-style:normal;color:var(--cyan)}.manifesto-rule{height:1px;background:linear-gradient(90deg,var(--cyan),transparent);margin:28px 0}.my-elara{font-size:clamp(17px,2vw,23px);line-height:1.6;color:#d8e7ef;max-width:850px}.my-elara strong{color:#fff}.my-elara-signoff{margin-top:24px;font-family:monospace;letter-spacing:.16em;color:var(--cyan);font-size:12px}.manifesto-kicker{font-family:monospace;letter-spacing:.18em;font-size:11px;color:var(--cyan)}
+    .human-manifesto{margin:34px auto 0;max-width:980px;padding:clamp(28px,5vw,54px);border:1px solid rgba(89,225,255,.24);background:linear-gradient(135deg,rgba(8,24,34,.92),rgba(8,16,26,.72));position:relative;overflow:hidden}.human-manifesto:before{content:"HUMAN // IN COMMAND";position:absolute;right:18px;top:14px;font:700 10px/1 monospace;letter-spacing:.18em;color:rgba(89,225,255,.48)}.manifesto-quote{font-size:clamp(22px,3.2vw,38px);line-height:1.28;font-weight:700;letter-spacing:-.025em;margin:10px 0 18px}.manifesto-quote em{font-style:normal;color:var(--accent)}.manifesto-rule{height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin:28px 0}.my-elara{font-size:clamp(17px,2vw,23px);line-height:1.6;color:#d8e7ef;max-width:850px}.my-elara strong{color:#fff}.my-elara-signoff{margin-top:24px;font-family:monospace;letter-spacing:.16em;color:var(--accent);font-size:12px}.manifesto-kicker{font-family:monospace;letter-spacing:.18em;font-size:11px;color:var(--accent)}
 </style>
 </head>
 
@@ -513,10 +513,14 @@ radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--
 
   <div class="card">
     <h3>Start an ELARA Business Assessment</h3>
-    <label for="bizName">Business name</label>\n    <input id="bizName" placeholder="Business name" autocomplete="organization">
-    <label for="bizIndustry">Industry / business type</label>\n    <input id="bizIndustry" placeholder="Industry / business type">
-    <label for="bizGoal">Main goal or challenge</label>\n    <textarea id="bizGoal" placeholder="Main goal or challenge"></textarea>
-    <label for="bizContact">Email or phone</label>\n    <input id="bizContact" placeholder="Email or phone" autocomplete="email">
+    <label for="bizName">Business name</label>
+    <input id="bizName" placeholder="Business name" autocomplete="organization">
+    <label for="bizIndustry">Industry / business type</label>
+    <input id="bizIndustry" placeholder="Industry / business type">
+    <label for="bizGoal">Main goal or challenge</label>
+    <textarea id="bizGoal" placeholder="Main goal or challenge"></textarea>
+    <label for="bizContact">Email or phone</label>
+    <input id="bizContact" placeholder="Email or phone" autocomplete="email">
 
     <button class="btn primary" type="button" onclick="sendAssessment()">REQUEST ASSESSMENT</button>
   </div>
