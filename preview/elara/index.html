@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroMuse | ELARA Intelligence Platform</title>
+
+<style>
+:root {
+  --bg:#020b12;
+  --panel:#061923;
+  --line:#00ffee;
+  --text:#eafcff;
+  --muted:#8aa4ad;
+  --accent:#00ffee;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  background:radial-gradient(circle at top,#082833,#020b12 55%);
+  color:var(--text);
+  font-family:Arial, sans-serif;
+}
+
+.launch-banner {
+  background: rgba(0, 255, 238, 0.08);
+  border-bottom: 1px solid rgba(0, 255, 238, 0.35);
+  color: var(--text);
+  padding: 14px 28px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.launch-banner strong {
+  color: var(--accent);
+}
+
+.launch-banner a {
+  color: var(--accent);
+  margin-left: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+  
+header {
+  padding:28px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(0,255,238,.25);
+  background:rgba(2,11,18,.85);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo {
+  color:var(--accent);
+  font-weight:bold;
+  letter-spacing:8px;
+  font-size:20px;
+}
+
+nav a {
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:24px;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+section {
+  padding:90px 7%;
+}
+
+.hero {
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+}
+
+.hero h1 {
+  font-size:64px;
+  line-height:1.05;
+  max-width:900px;
+  margin:0 0 24px;
+}
+
+.hero p {
+  font-size:22px;
+  color:var(--muted);
+  max-width:780px;
+  line-height:1.6;
+}
+
+.buttons {
+  margin-top:34px;
+}
+
+.btn {
+  display:inline-block;
+  padding:15px 24px;
+  border:1px solid var(--line);
+  color:var(--accent);
+  text-decoration:none;
+  letter-spacing:2px;
+  font-size:12px;
+  margin-right:14px;
+  margin-top:12px;
+}
+
+.btn.primary {
+  background:linear-gradient(90deg,#00ffee,#38bdf8);
+  color:#001316;
+  font-weight:bold;
+}
+
+.eyebrow {
+  color:var(--accent);
+  letter-spacing:4px;
+  font-size:12px;
+  margin-bottom:14px;
+}
+
+h2 {
+  font-size:40px;
+  margin:0 0 22px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:22px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+  
+.card {
+  background:rgba(6,25,35,.8);
+  border:1px solid rgba(0,255,238,.28);
+  padding:28px;
+  min-height:220px;
+}
+
+.card h3 {
+  color:var(--accent);
+  margin-top:0;
+}
+
+.card p, .card li {
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.platform {
+  border:1px solid rgba(0,255,238,.3);
+  padding:34px;
+  background:rgba(0,255,238,.04);
+  max-width:900px;
+}
+
+.flow {
+  font-family:monospace;
+  color:var(--accent);
+  line-height:2;
+  font-size:16px;
+}
+
+input, textarea {
+  width:100%;
+  padding:14px;
+  margin-bottom:12px;
+  background:#04131b;
+  border:1px solid rgba(0,255,238,.35);
+  color:white;
+}
+
+textarea {
+  min-height:120px;
+}
+
+footer {
+  padding:35px 7%;
+  border-top:1px solid rgba(0,255,238,.25);
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+@media(max-width:700px) {
+  header{align-items:flex-start;gap:14px;flex-direction:column;padding:16px 5%}
+  .logo{font-size:14px}
+  nav{display:flex;width:100%;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{flex:0 0 auto;font-size:10px;padding:8px 0}
+  .launch-banner{padding:12px 5%;line-height:1.5}
+  section{padding:64px 5%}
+  .hero{min-height:68vh;padding-top:52px}
+  .hero h1{font-size:clamp(44px,15vw,68px)}
+  .buttons{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+  .btn{margin-right:0;text-align:center;width:100%;box-sizing:border-box}
+}
+
+/* ELARA public demo layer */
+.elara-demo{margin:0 7% 90px;padding:42px;border:1px solid rgba(0,255,238,.45);background:linear-gradient(135deg,rgba(0,255,238,.08),rgba(56,189,248,.03));position:relative;overflow:hidden}
+.elara-demo:before{content:"ELARA";position:absolute;right:-10px;top:-30px;font-size:150px;font-weight:900;color:rgba(0,255,238,.035)}
+.elara-demo h2{max-width:760px}.elara-demo p{color:var(--muted);max-width:760px;line-height:1.7}
+.elara-prompt{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.elara-chip{border:1px solid rgba(0,255,238,.35);background:#04131b;color:var(--text);padding:11px 14px;cursor:pointer}
+.pilot-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.pilot{padding:20px;border:1px solid rgba(0,255,238,.22);background:rgba(2,11,18,.65)}
+.pilot strong{display:block;color:var(--accent);margin-bottom:8px}.pilot{transition:.2s transform,.2s border-color}.pilot:hover{transform:translateY(-3px);border-color:rgba(0,255,238,.65)}.pilot span{color:var(--muted);font-size:14px;line-height:1.5}
+.powered{font-size:11px;letter-spacing:2px;color:var(--muted);margin-top:26px}
+@media(max-width:800px){.pilot-strip{grid-template-columns:1fr}.elara-demo{margin:0 4% 60px;padding:26px}}
+
+/* Flagship visual upgrade */
+body{background:
+radial-gradient(circle at 82% 12%,rgba(0,255,238,.09),transparent 24rem),
+radial-gradient(circle at 10% 36%,rgba(36,121,255,.07),transparent 28rem),var(--bg)}
+.hero{position:relative;overflow:hidden;min-height:72vh;display:grid;align-items:center}
+.hero:before{content:"";position:absolute;inset:8% 5% auto auto;width:min(42vw,560px);aspect-ratio:1;border:1px solid rgba(0,255,238,.18);border-radius:50%;box-shadow:0 0 80px rgba(0,255,238,.08),inset 0 0 80px rgba(0,255,238,.04);background:repeating-radial-gradient(circle,transparent 0 42px,rgba(0,255,238,.07) 43px 44px)}
+.hero:after{content:"ELARA // PERCEPTION • KNOWLEDGE • DECISION";position:absolute;right:7%;bottom:11%;font-size:10px;letter-spacing:.22em;color:rgba(0,255,238,.55);padding:10px 14px;border-left:2px solid var(--accent);background:rgba(0,12,18,.72)}
+.hero>div{position:relative;z-index:1;max-width:850px}
+.hero h1{font-size:clamp(52px,8vw,108px);line-height:.9;letter-spacing:-.045em;max-width:900px}
+.hero p{max-width:720px;font-size:clamp(16px,1.6vw,20px)}
+.card{position:relative;overflow:hidden;transition:transform .22s ease,border-color .22s ease,background .22s ease}
+.card:after{content:"";position:absolute;width:70px;height:1px;background:var(--accent);right:18px;top:18px;opacity:.35}
+.card:hover{transform:translateY(-5px);border-color:rgba(0,255,238,.5);background:rgba(0,255,238,.035)}
+.flow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;background:linear-gradient(180deg,rgba(0,255,238,.06),rgba(0,0,0,.1));border:1px solid rgba(0,255,238,.2);padding:34px}
+@media(max-width:800px){.hero:before{width:90vw;right:-45%;opacity:.55}.hero:after{display:none}.hero{min-height:65vh}}
+
+    .human-manifesto{margin:34px auto 0;max-width:980px;padding:clamp(28px,5vw,54px);border:1px solid rgba(89,225,255,.24);background:linear-gradient(135deg,rgba(8,24,34,.92),rgba(8,16,26,.72));position:relative;overflow:hidden}.human-manifesto:before{content:"HUMAN // IN COMMAND";position:absolute;right:18px;top:14px;font:700 10px/1 monospace;letter-spacing:.18em;color:rgba(89,225,255,.48)}.manifesto-quote{font-size:clamp(22px,3.2vw,38px);line-height:1.28;font-weight:700;letter-spacing:-.025em;margin:10px 0 18px}.manifesto-quote em{font-style:normal;color:var(--accent)}.manifesto-rule{height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin:28px 0}.my-elara{font-size:clamp(17px,2vw,23px);line-height:1.6;color:#d8e7ef;max-width:850px}.my-elara strong{color:#fff}.my-elara-signoff{margin-top:24px;font-family:monospace;letter-spacing:.16em;color:var(--accent);font-size:12px}.manifesto-kicker{font-family:monospace;letter-spacing:.18em;font-size:11px;color:var(--accent)}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">NEUROMUSE TECHNOLOGIES</div>
+  <nav>
+    <a href="#platform">PLATFORM</a>
+    <a href="#pilots">REAL WORLD</a>
+    <a href="#applications">APPLICATIONS</a>
+    <a href="#business">BUSINESS AI</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<div class="launch-banner">
+  <strong>🚀 Founder Launch Program:</strong>
+  Turn your skills, tools, or business idea into a growth plan.
+  First 25 Founder Assessments include personalized setup support.
+  <a href="#business">Launch Assessment: $99</a>
+</div>
+  
+<section class="hero">
+  <div>
+    <div class="eyebrow">ELARA INTELLIGENCE PLATFORM</div>
+    <h1>AI that understands the world around you.</h1>
+    <p>
+      NeuroMuse Technologies develops ELARA, an adaptive intelligence platform that connects vision,
+      memory, knowledge, and AI agents to help people and organizations understand, respond, and
+      make better decisions in real time.
+    </p>
+
+    <div class="buttons">
+      <a class="btn primary" href="#contact">REQUEST DEMO</a>
+<a class="btn" href="mailto:jesse@neuromusehq.com?subject=ELARA Founder Assessment Request&body=Hello NeuroMuse,%0D%0A%0D%0AI would like to request an ELARA Business Assessment.%0D%0A%0D%0ABusiness Name:%0D%0AIndustry / Business Type:%0D%0ALocation:%0D%0A%0D%0AAre you:%0D%0A[ ] Veteran%0D%0A[ ] Military Family%0D%0A[ ] Small Business%0D%0A[ ] Startup%0D%0A[ ] Nonprofit%0D%0A%0D%0ACurrent challenge:%0D%0A(customers, funding, marketing, growth, operations, contracts, permits, inventory, etc.)%0D%0A%0D%0AWhat would you like ELARA to help improve?%0D%0A%0D%0AThank you.">START BUSINESS ASSESSMENT</a>      <a class="btn" href="#platform">EXPLORE PLATFORM</a>
+    </div>
+  </div>
+</section>
+
+ <section class="elara-demo" id="demo">
+  <div class="eyebrow">MEET ELARA</div>
+  <h2>Would you like to know more?</h2>
+  <p>ELARA connects specialized agents, real-world information and human approval into one working intelligence layer. Explore how the same core adapts to different missions.</p>
+  <div class="elara-prompt">
+    <button class="elara-chip" onclick="document.getElementById('applications').scrollIntoView()">Show me what ELARA can do</button>
+    <button class="elara-chip" onclick="document.getElementById('business').scrollIntoView()">Help my business</button>
+    <button class="elara-chip" onclick="document.getElementById('pilots').scrollIntoView()">Show me ELARA in the real world</button>
+  </div>
+  <div class="pilot-strip" id="pilots">
+    <a class="pilot" href="https://neto21oh.github.io/texas-patriot-land-services/" target="_blank" rel="noopener" style="text-decoration:none"><strong>FIELD OPERATIONS ↗</strong><span>Texas Patriot Land Services — an ELARA Pilot Partner testing field workflows and business operations.</span></a>
+    <div class="pilot"><strong>SKILLED TRADES</strong><span>Unique Floors by the Bay — an ELARA Pilot Partner for estimating, crews, customer workflow and future AR assistance.</span></div>
+    <div class="pilot"><strong>TOURISM & DISCOVERY</strong><span>Oʻahu Companion — events, culture, translation and contextual island assistance powered by ELARA.</span></div>
+  </div>
+  <div class="powered">ELARA™ • HUMAN-GUIDED INTELLIGENCE BY NEUROMUSE TECHNOLOGIES</div>
+</section>
+
+
+<section id="human-command">
+  <div class="eyebrow">THE HUMAN STAYS IN COMMAND</div>
+  <h2>Intelligence that stays with the human.</h2>
+  <div class="human-manifesto">
+    <div class="manifesto-kicker">THE MODERN HUMAN + ELARA</div>
+    <div class="manifesto-quote">The modern human doesn't need another machine that replaces them. They need a machine that extends what they can <em>perceive, remember, understand and accomplish</em>—while leaving them in command.</div>
+    <div class="manifesto-rule"></div>
+    <div class="my-elara"><strong>“This is my ELARA.</strong> She knows what I'm working on, helps me see what I'm missing, brings in the right capability when I need it, remembers the important things, and doesn't take consequential action without me.”</div>
+    <div class="my-elara-signoff">THIS IS MY ELARA. // HUMAN-GUIDED INTELLIGENCE</div>
+  </div>
+</section>
+
+<section id="pillars">
+  <div class="eyebrow">THE ELARA PLATFORM</div>
+  <h2>Built around three intelligence layers.</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Perception</h3>
+      <p>
+        ELARA connects vision, sensors, and real-world context so AI can understand
+        objects, surroundings, hazards, routines, and environments.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Knowledge</h3>
+      <p>
+        Specialized agents and knowledge modules help ELARA support healthcare,
+        education, environment, safety, collectibles, and field operations.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Decision Support</h3>
+      <p>
+        ELARA turns information into action through intelligent agents, reports, 
+        business assessments, grant discovery, workflows, and operational support.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="prototype">
+  <div class="eyebrow">FROM PROTOTYPE TO REAL WORLD TESTING</div>
+
+  <h2>Building AI systems designed for the real world.</h2>
+
+  <p style="color:var(--muted); max-width:900px; line-height:1.7;">
+    NeuroMuse Technologies develops ELARA as a connected intelligence platform —
+    combining AI agents, vision systems, knowledge modules, and adaptive assistance
+    for real-world environments.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Wearable AI Interface</h3>
+      <p>
+        ELARA enables hands-free interaction through HUD concepts, voice control,
+        computer vision, and contextual assistance designed around human needs.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Adaptive Memory Support</h3>
+      <p>
+        NeuroNest provides memory assistance tools including object awareness,
+        routine guidance, environmental reminders, and caregiver support tools.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Field Intelligence</h3>
+      <p>
+        ELARA modules extend into environmental awareness, safety support,
+        research assistance, and mission-focused decision tools.
+      </p>
+    </div>
+
+  </div>
+</section>
+  
+<section id="platform">
+  <div class="eyebrow">THE PLATFORM</div>
+  <h2>One intelligence core. Multiple missions.</h2>
+
+  <div class="platform">
+    <div class="flow">
+      Camera / Data / Documents<br>
+      ↓<br>
+      ELARA Core Intelligence<br>
+      ↓<br>
+      ELARA Decision & Governance Layer<br>
+      ↓<br>
+      Specialized Agents and Modules<br>
+      ↓<br>
+      HUD · Mobile · Desktop · Reports
+    </div>
+  </div>
+</section>
+
+<section id="engine">
+  <div class="eyebrow">ELARA INTELLIGENCE ENGINE</div>
+
+  <h2>One intelligence system. Multiple ways to assist.</h2>
+
+  <p style="color:var(--muted); max-width:900px; line-height:1.7;">
+    ELARA connects information, specialized AI agents, and knowledge systems
+    to transform data into meaningful assistance across different environments.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Input Layer</h3>
+      <p>
+        ELARA receives information from vision systems, conversations,
+        documents, sensors, assessments, and real-world interactions.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Agent Layer</h3>
+      <p>
+        Specialized AI agents analyze information using focused knowledge
+        modules for healthcare, environment, business, education, and field support.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Action Layer</h3>
+      <p>
+        ELARA helps create guidance, reports, recommendations, workflows,
+        alerts, and next-step decisions for people and organizations.
+      </p>
+    </div>
+
+  </div>
+</section>
+  
+<section id="applications">
+  <div class="eyebrow">APPLICATIONS</div>
+<h2>One intelligence platform. Built for people, businesses, and the real world.</h2> 
+  <div class="grid">
+    <div class="card">
+    <h3>Healthcare & Assistive Intelligence</h3>      
+      <p>
+        NeuroNest supports memory assistance, object recognition, routine guidance,
+        caregiver support, and daily living awareness.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Environmental & Field Intelligence</h3>
+      <p>
+        NeuroDive, NeuroSurvivor, and field intelligence tools help identify risks,
+        environmental patterns, safety needs, and mission context.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Business Intelligence</h3>
+      <p>
+        CustomerScout and GrantScout help businesses and institutions understand
+        opportunities, generate reports, plan growth, and prepare next steps.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="business">
+  <div class="eyebrow">ELARA BUSINESS AI</div>
+  <h2>Helping organizations understand opportunities and take action.</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>CustomerScout</h3>
+      <p>
+        Creates AI business assessments, recommends agent modules, and produces
+        growth roadmaps for small businesses and organizations.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>GrantScout</h3>
+      <p>
+        Helps identify funding paths, grant opportunities, contracts, and proposal
+        directions based on the organization’s mission and readiness.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Business Agent Support</h3>
+      <p>
+        Supports reports, outreach, automation planning, customer follow-up,
+        document preparation, and long-term business development.
+      </p>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="card">
+    <h3>Start an ELARA Business Assessment</h3>
+    <label for="bizName">Business name</label>
+    <input id="bizName" placeholder="Business name" autocomplete="organization">
+    <label for="bizIndustry">Industry / business type</label>
+    <input id="bizIndustry" placeholder="Industry / business type">
+    <label for="bizGoal">Main goal or challenge</label>
+    <textarea id="bizGoal" placeholder="Main goal or challenge"></textarea>
+    <label for="bizContact">Email or phone</label>
+    <input id="bizContact" placeholder="Email or phone" autocomplete="email">
+
+    <button class="btn primary" type="button" onclick="sendAssessment()">REQUEST ASSESSMENT</button>
+  </div>
+</section>
+
+<section id="workflow">
+
+  <div class="eyebrow">HOW ELARA WORKS</div>
+
+  <h2>From information to intelligent action.</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>1. Understand</h3>
+      <p>
+        ELARA gathers information from assessments, sensors, documents,
+        and real-world interactions to understand the situation.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>2. Analyze</h3>
+      <p>
+        Specialized AI agents review goals, challenges, opportunities,
+        and available knowledge to create meaningful insights.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>3. Assist</h3>
+      <p>
+        ELARA helps generate reports, recommendations, workflows,
+        guidance, and next steps for people and organizations.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+  
+<section>
+  <div class="eyebrow">BUILT IN HAWAIʻI</div>
+  <h2>From prototype to platform.</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Live Prototypes</h3>
+      <p>ELARA has evolved from HUD demonstrations into a modular AI operating environment.</p>
+    </div>
+
+    <div class="card">
+      <h3>Education and Workforce</h3>
+      <p>Designed with student involvement, learning pathways, and workforce innovation in mind.</p>
+    </div>
+
+    <div class="card">
+      <h3>Partner Ready</h3>
+      <p>Built for pilots, grants, institutions, small businesses, and real-world deployment.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="eyebrow">WORK WITH ELARA</div>
+
+  <h2>AI support for every stage of your mission.</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Launch Assessment</h3>
+      <h2>$99</h2>
+      <p>
+        For entrepreneurs, creators, service providers, and small
+        businesses ready to improve pricing, discover opportunities, and build an action plan.
+      </p>
+      <p>
+        Includes business review, estimate support, funding pathway scan,
+        and personalized ELARA report.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>ELARA Business Assistant</h3>
+      <h2>$49/month</h2>
+      <p>
+        Ongoing support with estimates, customer messages, documents, workflows, 
+        growth planning, and AI-powered business assistance.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Innovation Partner</h3>
+      <h2>Starting at $499</h2>
+      <p>
+        Advanced ELARA systems for organizations, research teams,
+        education, and specialized deployments.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+
+  <div class="eyebrow">CONNECT WITH NEUROMUSE</div>
+
+  <h2>Explore what ELARA can help you build, improve, or understand.</h2>
+
+  <p style="color:var(--muted);max-width:760px;line-height:1.7;">
+    NeuroMuse Technologies is working with businesses, researchers,
+    educators, organizations, and innovators exploring the next generation
+    of adaptive AI assistance.
+    <br><br>
+    Request a business assessment, explore collaboration opportunities,
+    or schedule a demonstration of the ELARA intelligence platform.
+  </p>
+
+
+  <div class="buttons">
+
+    <a class="btn primary"
+       href="mailto:info@neuromusehq.com?subject=ELARA Demo Request">
+       REQUEST DEMO
+    </a>
+
+
+<a class="btn"
+href="mailto:clients@neuromusehq.com?subject=ELARA Business Assessment Request&body=Business Name:%0D%0A%0D%0ABusiness Type:%0D%0A%0D%0ALocation:%0D%0A%0D%0ACurrent Stage:%0D%0AIdea / Starting / Operating / Growing%0D%0A%0D%0AMilitary Connection (if applicable):%0D%0AActive Duty / Veteran / Military Spouse / None%0D%0A%0D%0AWhat do you need help with:%0D%0APricing and Estimates%0D%0AFinding Customers%0D%0AFunding Opportunities%0D%0ABusiness Setup%0D%0AMarketing%0D%0AAI Automation%0D%0A%0D%0AMain Challenge:%0D%0A%0D%0AWebsite or Social Media:%0D%0A%0D%0APhone/ Best Contact:">START BUSINESS ASSESSMENT</a>
+  </div>
+
+</section>
+
+<footer>
+  NEUROMUSE LLC · ELARA INTELLIGENCE PLATFORM · BUILT IN HAWAIʻI
+</footer>
+
+<script>
+function sendAssessment() {
+  const business = document.getElementById("bizName").value.trim();
+  const industry = document.getElementById("bizIndustry").value.trim();
+  const goal = document.getElementById("bizGoal").value.trim();
+  const contact = document.getElementById("bizContact").value.trim();
+
+  if (!business || !industry || !contact) {
+    alert("Please enter business name, industry, and contact.");
+    return;
+  }
+
+  const subject = "ELARA Business Assessment Request";
+  const body =
+    "Business: " + business + "\n" +
+    "Industry: " + industry + "\n" +
+    "Goal: " + goal + "\n" +
+    "Contact: " + contact;
+
+  window.location.href =
+    "mailto:clients@neuromusehq.com?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+}
+</script>
+
+</body>
+</html>
