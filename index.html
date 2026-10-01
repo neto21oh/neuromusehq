@@ -212,6 +212,30 @@ footer {
     display:none;
   }
 }
+
+/* Seasonal presentation layer */
+body.season-halloween{background:
+ radial-gradient(circle at 15% 20%,rgba(255,94,0,.18),transparent 28%),
+ radial-gradient(circle at 85% 10%,rgba(168,85,247,.18),transparent 30%),
+ linear-gradient(180deg,#05020b 0%,#100713 52%,#020b12 100%);
+}
+body.season-halloween header{background:rgba(4,2,10,.94);border-bottom-color:rgba(255,115,0,.45)}
+body.season-halloween .launch-banner{background:linear-gradient(90deg,rgba(255,94,0,.13),rgba(168,85,247,.10));border-bottom-color:rgba(255,115,0,.4)}
+body.season-halloween .eyebrow{color:#ff8a00}
+body.season-halloween .logo{color:#ff8a00}
+body.season-halloween .btn{border-color:#ff8a00;color:#ffb15c}
+body.season-halloween .btn.primary{background:linear-gradient(90deg,#ff6a00,#ffb000);color:#180900}
+body.season-halloween .card{border-color:rgba(255,115,0,.32);box-shadow:0 0 24px rgba(255,90,0,.06)}
+body.season-halloween .card h3{color:#ff9a2e}
+body.season-halloween .platform{border-color:rgba(255,115,0,.35);background:rgba(255,115,0,.045)}
+body.season-halloween .flow{color:#ff9a2e}
+.season-switch{display:inline-flex;align-items:center;gap:7px;margin-left:20px;padding:9px 13px;border:1px solid rgba(0,255,238,.35);border-radius:999px;color:var(--text);background:#04131b;font-size:11px;letter-spacing:1px;cursor:pointer}
+.season-switch:hover{border-color:#ff8a00;color:#ffb15c}
+.season-badge{display:none;margin-left:12px;color:#ff9a2e;font-weight:800}
+body.season-halloween .season-badge{display:inline}
+.season-panel{margin:0 7% 30px;padding:12px 18px;border:1px solid rgba(255,115,0,.3);border-radius:12px;background:linear-gradient(90deg,rgba(255,94,0,.10),rgba(168,85,247,.07));color:#eafcff}
+.season-panel strong{color:#ff9a2e}
+@media(max-width:700px){.season-switch{margin:12px 0 0}.season-badge{display:none}}
 </style>
 </head>
 
@@ -223,9 +247,11 @@ footer {
     <a href="#platform">PLATFORM</a>
     <a href="#applications">APPLICATIONS</a>
     <a href="#business">BUSINESS AI</a>
-    <a href="#contact">CONTACT</a>
+    <a href="#contact">CONTACT</a><button class="season-switch" id="seasonSwitch" type="button">🎃 SEASON <span class="season-badge">HALLOWEEN</span></button>
   </nav>
 </header>
+
+<div class="season-panel" id="seasonPanel" aria-live="polite"><strong>🌺 ELARA NOW:</strong> Real-world AI for people, work, and everyday life.</div>
 
 <div class="launch-banner">
   <strong>🚀 Founder Launch Program:</strong>
@@ -236,9 +262,9 @@ footer {
   
 <section class="hero">
   <div>
-    <div class="eyebrow">ELARA INTELLIGENCE PLATFORM</div>
-    <h1>AI that understands the world around you.</h1>
-    <p>
+    <div class="eyebrow" id="heroEyebrow">ELARA INTELLIGENCE PLATFORM</div>
+    <h1 id="heroTitle">AI that understands the world around you.</h1>
+    <p id="heroText">
       NeuroMuse Technologies develops ELARA, an adaptive intelligence platform that connects vision,
       memory, knowledge, and AI agents to help people and organizations understand, respond, and
       make better decisions in real time.
@@ -616,8 +642,47 @@ function sendAssessment() {
   window.location.href =
     "mailto:clients@neuromusehq.com?subject=" +
     encodeURIComponent(subject) +
-    "&body=" + body;
+    "&body=" + encodeURIComponent(
+      "Business: " + business + "\n" +
+      "Industry: " + industry + "\n" +
+      "Goal: " + goal + "\n" +
+      "Contact: " + contact
+    );
 }
+
+function applySeason() {
+  const month = new Date().getMonth() + 1;
+  const halloween = month === 10;
+  document.body.classList.toggle("season-halloween", halloween);
+
+  const panel = document.getElementById("seasonPanel");
+  const eyebrow = document.getElementById("heroEyebrow");
+  const title = document.getElementById("heroTitle");
+  const text = document.getElementById("heroText");
+  const switcher = document.getElementById("seasonSwitch");
+
+  if (halloween) {
+    panel.innerHTML = "<strong>🎃 OCTOBER SEASON:</strong> Spooky-good innovation with the same ELARA mission, privacy-first approach, and human oversight.";
+    eyebrow.textContent = "ELARA INTELLIGENCE PLATFORM · OCTOBER";
+    title.textContent = "Real-world AI. Spooky-good solutions.";
+    text.textContent = "NeuroMuse Technologies develops ELARA, an adaptive intelligence platform connecting vision, memory, knowledge, and AI agents to help people and organizations understand, respond, and make better decisions—with a seasonal October experience.";
+    switcher.innerHTML = "🎃 SEASON <span class='season-badge'>HALLOWEEN</span>";
+  } else {
+    panel.innerHTML = "<strong>🌺 ELARA NOW:</strong> Real-world AI for people, work, and everyday life.";
+    eyebrow.textContent = "ELARA INTELLIGENCE PLATFORM";
+    title.textContent = "AI that understands the world around you.";
+    text.textContent = "NeuroMuse Technologies develops ELARA, an adaptive intelligence platform that connects vision, memory, knowledge, and AI agents to help people and organizations understand, respond, and make better decisions in real time.";
+    switcher.innerHTML = "🌺 SEASON <span class='season-badge'>CURRENT</span>";
+  }
+}
+document.getElementById("seasonSwitch").addEventListener("click", () => {
+  document.body.classList.toggle("season-halloween");
+  const on = document.body.classList.contains("season-halloween");
+  document.getElementById("seasonPanel").innerHTML = on
+    ? "<strong>🎃 PREVIEW:</strong> October seasonal presentation is enabled. The ELARA platform and content remain unchanged."
+    : "<strong>🌺 ELARA NOW:</strong> Real-world AI for people, work, and everyday life.";
+});
+applySeason();
 </script>
 
 </body>
