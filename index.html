@@ -80,9 +80,46 @@ section {
 
 .hero {
   min-height:80vh;
-  display:flex;
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(310px,.65fr);
+  gap:70px;
   align-items:center;
 }
+.hero-copy{position:relative;z-index:1}
+.hero-console{
+  position:relative;
+  padding:26px;
+  border:1px solid rgba(0,255,238,.28);
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(8,30,41,.94),rgba(3,12,20,.86));
+  box-shadow:0 20px 70px rgba(0,0,0,.35),inset 0 0 45px rgba(0,255,238,.035);
+  overflow:hidden;
+}
+.hero-console::before{
+  content:"";
+  position:absolute;
+  inset:-45%;
+  background:conic-gradient(from 180deg,transparent 0 55%,rgba(0,255,238,.10),transparent 70%);
+  animation:consoleSpin 10s linear infinite;
+}
+.console-top,.console-row,.console-footer,.console-orb{position:relative;z-index:1}
+.console-top{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:2px}
+.pulse{color:#45f0b0;text-shadow:0 0 12px #45f0b0}
+.console-orb{
+  width:150px;height:150px;margin:32px auto;border-radius:50%;
+  display:grid;place-items:center;
+  border:1px solid rgba(0,255,238,.5);
+  background:radial-gradient(circle,rgba(0,255,238,.20),rgba(0,255,238,.035) 52%,transparent 70%);
+  box-shadow:0 0 45px rgba(0,255,238,.10);
+  color:var(--accent);font-weight:900;letter-spacing:4px;
+}
+.console-row{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid rgba(0,255,238,.12);font-size:11px;letter-spacing:1.5px}
+.console-row span{color:var(--muted)} .console-row b{color:#45f0b0;font-size:10px}
+.console-footer{text-align:center;margin-top:16px;color:var(--accent);font-size:10px;letter-spacing:2px}
+@keyframes consoleSpin{to{transform:rotate(360deg)}}
+body.season-halloween .hero-console{border-color:rgba(255,138,0,.45);background:linear-gradient(145deg,rgba(30,11,20,.95),rgba(8,4,13,.92))}
+body.season-halloween .console-orb{border-color:rgba(255,138,0,.65);background:radial-gradient(circle,rgba(255,138,0,.22),rgba(168,85,247,.08) 52%,transparent 70%);color:#ff9a2e;box-shadow:0 0 55px rgba(255,94,0,.12)}
+body.season-halloween .console-row b{color:#ffb15c}
 
 .hero h1 {
   font-size:64px;
@@ -203,14 +240,13 @@ footer {
   letter-spacing:2px;
 }
 
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:35px}
+  .hero-console{max-width:560px}
+}
 @media(max-width:700px) {
-  .hero h1 {
-    font-size:42px;
-  }
-
-  nav {
-    display:none;
-  }
+  .hero h1 {font-size:42px}
+  nav {display:none}
 }
 
 /* Seasonal presentation layer */
@@ -314,7 +350,7 @@ body.season-halloween .season-badge{display:inline}
 </div>
   
 <section class="hero">
-  <div>
+  <div class="hero-copy">
     <div class="eyebrow" id="heroEyebrow">ELARA INTELLIGENCE PLATFORM</div>
     <h1 id="heroTitle">AI that understands the world around you.</h1>
     <p id="heroText">
