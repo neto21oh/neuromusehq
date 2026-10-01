@@ -214,6 +214,59 @@ footer {
 }
 
 /* Seasonal presentation layer */
+/* Full-site seasonal presentation */
+body.season-halloween::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:20;
+  background:
+    radial-gradient(circle at 8% 18%,rgba(255,115,0,.09) 0 2px,transparent 3px),
+    radial-gradient(circle at 91% 30%,rgba(168,85,247,.10) 0 2px,transparent 3px);
+  background-size:140px 160px,190px 210px;
+  mix-blend-mode:screen;
+}
+body.season-halloween .hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(2,5,12,.94) 0%,rgba(10,4,16,.70) 48%,rgba(2,11,18,.25) 100%),
+    radial-gradient(circle at 78% 45%,rgba(255,94,0,.18),transparent 25%),
+    radial-gradient(circle at 62% 18%,rgba(168,85,247,.20),transparent 28%);
+}
+body.season-halloween .hero::after{
+  content:"";
+  position:absolute;
+  right:7%;
+  top:14%;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#fff5cf 0 5%,#ffd76a 7%,#ff8a00 16%,rgba(255,94,0,.18) 48%,transparent 70%);
+  opacity:.8;
+  filter:blur(.2px);
+}
+body.season-halloween .hero > div{position:relative;z-index:1}
+body.season-halloween .hero h1{
+  text-shadow:0 4px 30px rgba(255,94,0,.18);
+}
+body.season-halloween section:nth-of-type(even){
+  background:linear-gradient(180deg,rgba(255,94,0,.025),transparent);
+}
+body.season-halloween .card{
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+body.season-halloween .card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,138,0,.65);
+  box-shadow:0 12px 35px rgba(255,94,0,.10);
+}
+body.season-halloween footer{
+  background:rgba(0,0,0,.25);
+  border-top-color:rgba(255,115,0,.35);
+}
+
 body.season-halloween{background:
  radial-gradient(circle at 15% 20%,rgba(255,94,0,.18),transparent 28%),
  radial-gradient(circle at 85% 10%,rgba(168,85,247,.18),transparent 30%),
@@ -360,7 +413,7 @@ body.season-halloween .season-badge{display:inline}
       ↓<br>
       ELARA Core Intelligence<br>
       ↓<br>
-      MuseOS Decision Layer<br>
+      ELARA Decision Layer<br>
       ↓<br>
       Specialized Agents and Modules<br>
       ↓<br>
@@ -423,7 +476,7 @@ body.season-halloween .season-badge{display:inline}
     </div>
 
     <div class="card">
-      <h3>Enviromental & Field Intelligence</h3>
+      <h3>Environmental & Field Intelligence</h3>
       <p>
         NeuroDive, NeuroSurvivor, and field intelligence tools help identify risks,
         environmental patterns, safety needs, and mission context.
@@ -659,7 +712,7 @@ function applySeason() {
   const switcher = document.getElementById("seasonSwitch");
 
   if (halloween) {
-    panel.innerHTML = "<strong>🎃 OCTOBER SEASON:</strong> Spooky-good innovation with the same ELARA mission, privacy-first approach, and human oversight.";
+    panel.innerHTML = "<strong>🎃 OCTOBER SEASON:</strong> A seasonal NeuroMuse experience — while ELARA, our privacy-first intelligence platform, stays at the center.";
     eyebrow.textContent = "ELARA INTELLIGENCE PLATFORM · OCTOBER";
     title.textContent = "Real-world AI. Spooky-good solutions.";
     text.textContent = "NeuroMuse Technologies develops ELARA, an adaptive intelligence platform connecting vision, memory, knowledge, and AI agents to help people and organizations understand, respond, and make better decisions—with a seasonal October experience.";
