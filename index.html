@@ -738,7 +738,7 @@ function sendAssessment() {
 
 function applySeason() {
   const month = new Date().getMonth() + 1;
-  const halloween = month === 10;
+  const halloween = month === 9 || month === 10; // launch the October seasonal experience early
   document.body.classList.toggle("season-halloween", halloween);
 
   const panel = document.getElementById("seasonPanel");
